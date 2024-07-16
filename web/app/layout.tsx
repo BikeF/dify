@@ -8,7 +8,7 @@ import './styles/globals.css'
 import './styles/markdown.scss'
 
 export const metadata = {
-  title: 'Dify',
+  title: 'Agent Studio',
 }
 
 export const viewport: Viewport = {

@@ -32,7 +32,7 @@ const Layout = ({ children }: { children: ReactNode }) => {
 }
 
 export const metadata = {
-  title: 'Dify',
+  title: 'Agent Studio',
 }
 
 export default Layout

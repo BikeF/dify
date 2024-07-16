@@ -8,7 +8,7 @@ const translation = {
   },
   contribute: {
     line1: 'Ich interessiere mich dafür, ',
-    line2: 'Werkzeuge zu Dify beizutragen.',
+    line2: 'Werkzeuge zu Agent Studio beizutragen.',
     viewGuide: 'Leitfaden anzeigen',
   },
   author: 'Von',

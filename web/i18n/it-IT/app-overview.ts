@@ -28,7 +28,7 @@ const translation = {
     callTimes: 'Numero di chiamate',
     usedToken: 'Token utilizzati',
     setAPIBtn: 'Vai a configurare il fornitore di modelli',
-    tryCloud: 'O prova la versione cloud di Dify con quota gratuita',
+    tryCloud: 'O prova la versione cloud di Agent Studio con quota gratuita',
   },
   overview: {
     title: 'Panoramica',
@@ -65,7 +65,7 @@ const translation = {
           privacyPolicy: 'Privacy Policy',
           privacyPolicyPlaceholder: 'Inserisci il link alla privacy policy',
           privacyPolicyTip:
-            'Aiuta i visitatori a capire i dati raccolti dall\'applicazione, vedi la <privacyPolicyLink>Privacy Policy</privacyPolicyLink> di Dify.',
+            'Aiuta i visitatori a capire i dati raccolti dall\'applicazione, vedi la <privacyPolicyLink>Privacy Policy</privacyPolicyLink> di Agent Studio.',
           customDisclaimer: 'Disclaimer Personalizzato',
           customDisclaimerPlaceholder:
             'Inserisci il testo del disclaimer personalizzato',
@@ -81,7 +81,7 @@ const translation = {
           'Per aggiungere l\'app chat ovunque sul tuo sito web, aggiungi questo iframe al tuo codice HTML.',
         scripts:
           'Per aggiungere un\'app chat in basso a destra del tuo sito web, aggiungi questo codice al tuo HTML.',
-        chromePlugin: 'Installa l\'estensione Chrome di Dify Chatbot',
+        chromePlugin: 'Installa l\'estensione Chrome di Agent Studio Chatbot',
         copied: 'Copiato',
         copy: 'Copia',
       },
@@ -101,7 +101,7 @@ const translation = {
           step1: 'Fork il codice client e modificalo',
           step1Tip:
             'Clicca qui per fork il codice sorgente nel tuo account GitHub e modifica il codice',
-          step1Operation: 'Dify-WebClient',
+          step1Operation: 'Agent Studio-WebClient',
           step2: 'Distribuisci su Vercel',
           step2Tip:
             'Clicca qui per importare il repository su Vercel e distribuisci',
