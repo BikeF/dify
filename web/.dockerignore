@@ -8,7 +8,6 @@ logs
 # node
 node_modules
 .husky
-.next
 
 # vscode
 .vscode
