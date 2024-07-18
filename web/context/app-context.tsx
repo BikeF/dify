@@ -8,7 +8,7 @@ import { fetchAppList } from '@/service/apps'
 import Loading from '@/app/components/base/loading'
 import { fetchCurrentWorkspace, fetchLanggeniusVersion, fetchUserProfile } from '@/service/common'
 import type { App } from '@/types/app'
-import type { ICurrentWorkspace, LightARKVersionResponse, UserProfileResponse } from '@/models/common'
+import type { ICurrentWorkspace, LangGeniusVersionResponse, UserProfileResponse } from '@/models/common'
 import MaintenanceNotice from '@/app/components/header/maintenance-notice'
 
 export type AppContextValue = {
@@ -23,7 +23,7 @@ export type AppContextValue = {
   isCurrentWorkspaceDatasetOperator: boolean
   mutateCurrentWorkspace: VoidFunction
   pageContainerRef: React.RefObject<HTMLDivElement>
-  langeniusVersionInfo: LightARKVersionResponse
+  langeniusVersionInfo: LangGeniusVersionResponse
   useSelector: typeof useSelector
 }
 
@@ -86,7 +86,7 @@ export const AppContextProvider: FC<AppContextProviderProps> = ({ children }) =>
   const { data: currentWorkspaceResponse, mutate: mutateCurrentWorkspace } = useSWR({ url: '/workspaces/current', params: {} }, fetchCurrentWorkspace)
 
   const [userProfile, setUserProfile] = useState<UserProfileResponse>()
-  const [langeniusVersionInfo, setLangeniusVersionInfo] = useState<LightARKVersionResponse>(initialLangeniusVersionInfo)
+  const [langeniusVersionInfo, setLangeniusVersionInfo] = useState<LangGeniusVersionResponse>(initialLangeniusVersionInfo)
   const [currentWorkspace, setCurrentWorkspace] = useState<ICurrentWorkspace>(initialWorkspaceInfo)
   const isCurrentWorkspaceManager = useMemo(() => ['owner', 'admin'].includes(currentWorkspace.role), [currentWorkspace.role])
   const isCurrentWorkspaceOwner = useMemo(() => currentWorkspace.role === 'owner', [currentWorkspace.role])
