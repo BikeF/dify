@@ -29,7 +29,11 @@ const SignIn = () => {
     <>
       {!IS_CE_EDITION && (
         <>
-          <Script strategy="beforeInteractive" async src={'https://www.googletagmanager.com/gtag/js?id=AW-11217955271'}></Script>
+          <Script
+            strategy="beforeInteractive"
+            async
+            src={'https://www.googletagmanager.com/gtag/js?id=AW-11217955271'}
+          ></Script>
           <Script
             id="ga-monitor-register"
             dangerouslySetInnerHTML={{
@@ -40,53 +44,54 @@ gtag('js', new Date());
 gtag('config', 'AW-11217955271"');
         `,
             }}
-          >
-          </Script>
+          ></Script>
         </>
       )}
-      <div className={cn(
-        style.background,
-        'flex w-full min-h-screen',
-        'sm:p-4 lg:p-8',
-        'gap-x-20',
-        'justify-center lg:justify-start',
-      )}>
-        <div className={
-          cn(
+      <div
+        className={cn(
+          style.background,
+          'flex w-full min-h-screen',
+          'sm:p-4 lg:p-8',
+          'gap-x-20',
+          'justify-center lg:justify-start',
+        )}
+      >
+        <div
+          className={cn(
             'flex w-full flex-col bg-white shadow rounded-2xl shrink-0',
             'space-between',
-          )
-        }>
+          )}
+        >
           <Header />
 
           {loading && (
-            <div className={
-              cn(
+            <div
+              className={cn(
                 'flex flex-col items-center w-full grow justify-center',
                 'px-6',
                 'md:px-[108px]',
-              )
-            }>
-              <Loading type='area' />
+              )}
+            >
+              <Loading type="area" />
             </div>
           )}
 
           {!loading && !systemFeatures.sso_enforced_for_signin && (
             <>
               <Forms />
-              <div className='px-8 py-6 text-sm font-normal text-gray-500'>
-                © {new Date().getFullYear()} LangGenius, Inc. All rights reserved.
+              <div className="px-8 py-6 text-sm font-normal text-gray-500">
+                © {new Date().getFullYear()} LightARK, Inc. All rights reserved.
               </div>
             </>
           )}
 
           {!loading && systemFeatures.sso_enforced_for_signin && (
-            <UserSSOForm protocol={systemFeatures.sso_enforced_for_signin_protocol} />
+            <UserSSOForm
+              protocol={systemFeatures.sso_enforced_for_signin_protocol}
+            />
           )}
         </div>
-
       </div>
-
     </>
   )
 }
