@@ -215,7 +215,7 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     -H 'Content-Type: application/json' \
     --data-raw '{
         "inputs": {
-            "name": "dify"
+            "name": "Kofe"
         },
         "query": "What are the specs of the iPhone 13 Pro Max?",
         "conversation_id": "101b4c97-fc2e-463c-90b1-5261a4cdcafb",
@@ -227,7 +227,7 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     </CodeGroup>
 
     ### Python Request
-    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef chat_messages(api_key):\n    url = f'{props.appDetail.api_base_url}/chat-messages'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "inputs": {\n            "name": "dify"\n        },\n        "query": "What are the specs of the iPhone 13 Pro Max?",\n        "conversation_id": "101b4c97-fc2e-463c-90b1-5261a4cdcafb",\n        "response_mode": "streaming",\n        "user": "abc-123"\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n\n    result = chat_messages(api_key)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef chat_messages(api_key):\n    url = f'{props.appDetail.api_base_url}/chat-messages'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "inputs": {\n            "name": "Kofe"\n        },\n        "query": "What are the specs of the iPhone 13 Pro Max?",\n        "conversation_id": "101b4c97-fc2e-463c-90b1-5261a4cdcafb",\n        "response_mode": "streaming",\n        "user": "abc-123"\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n\n    result = chat_messages(api_key)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
       ```python
       ```
     </CodeGroup>
@@ -611,7 +611,7 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
             "id": "a076a87f-31e5-48dc-b452-0061adbbc922",
             "conversation_id": "cd78daf6-f9e4-4463-9ff2-54257230a0ce",
             "inputs": {
-                "name": "dify"
+                "name": "Kofe"
             },
             "query": "iphone 13 pro",
             "answer": "The iPhone 13 Pro, released on September 24, 2021, features a 6.1-inch display with a resolution of 1170 x 2532. It is equipped with a Hexa-core (2x3.23 GHz Avalanche + 4x1.82 GHz Blizzard) processor, 6 GB of RAM, and offers storage options of 128 GB, 256 GB, 512 GB, and 1 TB. The camera is 12 MP, the battery capacity is 3095 mAh, and it runs on iOS 15.",

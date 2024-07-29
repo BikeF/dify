@@ -67,7 +67,7 @@ const PanelOperator = ({
           id={id}
           data={data}
           onClosePopup={() => setOpen(false)}
-          showHelpLink={showHelpLink}
+          showHelpLink={false}
         />
       </PortalToFollowElemContent>
     </PortalToFollowElem>

@@ -36,7 +36,7 @@ const PanelContextmenu = () => {
         id={currentNode.id}
         data={currentNode.data}
         onClosePopup={() => handleNodeContextmenuCancel()}
-        showHelpLink
+        showHelpLink={false}
       />
     </div>
   )
