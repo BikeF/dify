@@ -1,6 +1,6 @@
 /** this file is used to embed the chatbot in a website
- * the difyChatbotConfig should be defined in the html file before this script is included
- * the difyChatbotConfig should contain the token of the chatbot
+ * the kofeChatbotConfig should be defined in the html file before this script is included
+ * the kofeChatbotConfig should contain the token of the chatbot
  * the token can be found in the chatbot settings page
  */
 
@@ -8,8 +8,8 @@
 
 (function () {
   // Constants for DOM element IDs and configuration key
-  const configKey = "difyChatbotConfig";
-  const buttonId = "dify-chatbot-bubble-button";
+  const configKey = "kofeChatbotConfig";
+  const buttonId = "kofe-chatbot-bubble-button";
   const iframeId = "dify-chatbot-bubble-window";
 
   // SVG icons for open and close states
