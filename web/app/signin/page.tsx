@@ -1,6 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import Script from 'next/script'
+import { useTranslation } from 'react-i18next'
 import Loading from '../components/base/loading'
 import Forms from './forms'
 import Header from './_header'
@@ -8,6 +9,7 @@ import style from './page.module.css'
 import UserSSOForm from './userSSOForm'
 import cn from '@/utils/classnames'
 import { IS_CE_EDITION } from '@/config'
+import Button from '@/app/components/base/button'
 
 import type { SystemFeatures } from '@/types/feature'
 import { defaultSystemFeatures } from '@/types/feature'
@@ -16,6 +18,7 @@ import { getSystemFeatures } from '@/service/common'
 const SignIn = () => {
   const [loading, setLoading] = useState<boolean>(true)
   const [systemFeatures, setSystemFeatures] = useState<SystemFeatures>(defaultSystemFeatures)
+  const { t } = useTranslation()
 
   useEffect(() => {
     getSystemFeatures().then((res) => {
@@ -24,6 +27,10 @@ const SignIn = () => {
       setLoading(false)
     })
   }, [])
+
+  const toPrice = () => {
+    window.open(process.env.NEXT_PUBLIC_WEB_URL)
+  }
 
   return (
     <>
@@ -79,8 +86,20 @@ gtag('config', 'AW-11217955271"');
           {!loading && !systemFeatures.sso_enforced_for_signin && (
             <>
               <Forms />
-              <div className="px-8 py-6 text-sm font-normal text-gray-500">
-                © {new Date().getFullYear()} LightARK, Inc. All rights reserved.
+              <div className="px-8 py-6 text-sm font-normal text-gray-500 flex justify-between items-center">
+                <div>
+                  © {new Date().getFullYear()} LightARK, Inc. All rights
+                  reserved.
+                </div>
+                <div>
+                  <Button className="w-full hover:!bg-gray-50" onClick={toPrice}>
+                    <>
+                      <span className="truncate text-gray-800">
+                        {t('login.price')}
+                      </span>
+                    </>
+                  </Button>
+                </div>
               </div>
             </>
           )}

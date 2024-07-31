@@ -24,6 +24,7 @@ const translation = {
   acceptPP: '我已閱讀並接受隱私政策',
   reset: '請執行以下命令重置密碼',
   withGitHub: '使用 GitHub 登入',
+  price: '價格',
   withGoogle: '使用 Google 登入',
   rightTitle: '釋放大型語言模型的全部潛能',
   rightDesc: '簡單構建視覺化、可運營、可改進的 AI 應用',
