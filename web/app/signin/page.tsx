@@ -88,8 +88,6 @@ gtag('config', 'AW-11217955271"');
               <Forms />
               <div className="px-8 py-6 text-sm font-normal text-gray-500 flex justify-between items-center">
                 <div>
-                  © {new Date().getFullYear()} LightARK, Inc. All rights
-                  reserved.
                 </div>
                 <div>
                   <Button className="w-full hover:!bg-gray-50" onClick={toPrice}>
