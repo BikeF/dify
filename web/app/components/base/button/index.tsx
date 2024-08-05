@@ -4,30 +4,29 @@ import { type VariantProps, cva } from 'class-variance-authority'
 import Spinner from '../spinner'
 import classNames from '@/utils/classnames'
 
-const buttonVariants = cva(
-  'btn disabled:btn-disabled',
-  {
-    variants: {
-      variant: {
-        'primary': 'btn-primary',
-        'warning': 'btn-warning',
-        'secondary': 'btn-secondary',
-        'secondary-accent': 'btn-secondary-accent',
-        'ghost': 'btn-ghost',
-        'tertiary': 'btn-tertiary',
-      },
-      size: {
-        small: 'btn-small',
-        medium: 'btn-medium',
-        large: 'btn-large',
-      },
+const buttonVariants = cva('btn disabled:btn-disabled', {
+  variants: {
+    variant: {
+      'primary': 'btn-primary',
+      'primary-linear': 'btn-primary-linear',
+      'warning': 'btn-warning',
+      'secondary': 'btn-secondary',
+      'secondary-accent': 'btn-secondary-accent',
+      'ghost': 'btn-ghost',
+      'tertiary': 'btn-tertiary',
     },
-    defaultVariants: {
-      variant: 'secondary',
-      size: 'medium',
+    size: {
+      small: 'btn-small',
+      medium: 'btn-medium',
+      large: 'btn-large',
+      big: 'btn-big',
     },
   },
-)
+  defaultVariants: {
+    variant: 'secondary',
+    size: 'medium',
+  },
+})
 
 export type ButtonProps = {
   loading?: boolean

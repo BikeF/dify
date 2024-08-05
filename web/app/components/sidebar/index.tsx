@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { useContext } from 'use-context-selector'
 import { useSelectedLayoutSegments } from 'next/navigation'
 import Link from 'next/link'
-import Toast from '../../base/toast'
 import Item from './app-nav-item'
+import Toast from "@/app/components/base/toast"
 import cn from '@/utils/classnames'
 import { fetchInstalledAppList as doFetchInstalledAppList, uninstallApp, updatePinStatus } from '@/service/explore'
 import ExploreContext from '@/context/explore-context'
@@ -49,7 +49,6 @@ const ChatIcon = () => (
 )
 
 export type IExploreSideBarProps = {
-  controlUpdateInstalledApps: number
 }
 
 const SideBar: FC<IExploreSideBarProps> = ({
@@ -101,7 +100,7 @@ const SideBar: FC<IExploreSideBarProps> = ({
   }, [controlUpdateInstalledApps])
 
   return (
-    <div className="w-fit sm:w-[216px] m-[5px] shrink-0 pt-6 px-4 rounded bg-gray-200 cursor-pointer">
+    <div className="w-fit sm:w-[216px] shrink-0 pt-6 px-4 rounded bg-gray-200 cursor-pointer">
       <div>
         <Link
           href="/explore/apps"

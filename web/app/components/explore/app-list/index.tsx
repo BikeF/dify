@@ -132,43 +132,24 @@ const Apps = ({
   }
 
   return (
-    <div className={cn(
-      'flex flex-col',
-      pageType === PageType.EXPLORE ? 'h-full border-l border-gray-200' : 'h-[calc(100%-56px)]',
-    )}>
+    <div className={cn("flex flex-col bg-gray-200 rounded", pageType === PageType.EXPLORE ? `h-full border-gray-200 ${s.appListBg}` : "h-[calc(100%-56px)]")}>
       {pageType === PageType.EXPLORE && (
-        <div className='shrink-0 pt-6 px-12'>
-          <div className={`mb-1 ${s.textGradient} text-xl font-semibold`}>{t('explore.apps.title')}</div>
-          <div className='text-gray-500 text-sm'>{t('explore.apps.description')}</div>
+        <div className="shrink-0 pt-6 px-12 text-center">
+          <div className={`mb-1 ${s.textGradient} text-2xl font-semibold`}>{t("explore.apps.title")}</div>
+          <div className="text-gray-500 text-sm">{t("explore.apps.description")}</div>
         </div>
       )}
-      <div className={cn(
-        'flex items-center mt-6',
-        pageType === PageType.EXPLORE ? 'px-12' : 'px-8',
-      )}>
+      <div className={cn("flex items-center mt-6", pageType === PageType.EXPLORE ? "px-12" : "px-8")}>
         {pageType !== PageType.EXPLORE && (
           <>
             <AppTypeSelector value={currentType} onChange={setCurrentType} />
-            <div className='mx-2 w-[1px] h-3.5 bg-gray-200' />
+            <div className="mx-2 w-[1px] h-3.5 bg-gray-200" />
           </>
         )}
-        <Category
-          list={categories}
-          value={currCategory}
-          onChange={setCurrCategory}
-          allCategoriesEn={allCategoriesEn}
-        />
+        <Category list={categories} value={currCategory} onChange={setCurrCategory} allCategoriesEn={allCategoriesEn} />
       </div>
-      <div className={cn(
-        'relative flex flex-1 pb-6 flex-col overflow-auto bg-gray-100 shrink-0 grow',
-        pageType === PageType.EXPLORE ? 'mt-6' : 'mt-0 pt-2',
-      )}>
-        <nav
-          className={cn(
-            s.appList,
-            'grid content-start shrink-0',
-            pageType === PageType.EXPLORE ? 'gap-4 px-6 sm:px-12' : 'gap-3 px-8  sm:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4',
-          )}>
+      <div className={cn("relative flex flex-1 pb-6 flex-col overflow-auto shrink-0 grow", pageType === PageType.EXPLORE ? "mt-6" : "mt-0 pt-2 bg-gray-100")}>
+        <nav className={cn(s.appList, "grid content-start shrink-0", pageType === PageType.EXPLORE ? "gap-4 px-6 sm:px-12" : "gap-3 px-8  sm:!grid-cols-2 md:!grid-cols-3 lg:!grid-cols-4")}>
           {filteredList.map(app => (
             <AppCard
               key={app.app_id}
@@ -183,17 +164,7 @@ const Apps = ({
           ))}
         </nav>
       </div>
-      {isShowCreateModal && (
-        <CreateAppModal
-          appIcon={currApp?.app.icon || ''}
-          appIconBackground={currApp?.app.icon_background || ''}
-          appName={currApp?.app.name || ''}
-          appDescription={currApp?.app.description || ''}
-          show={isShowCreateModal}
-          onConfirm={onCreate}
-          onHide={() => setIsShowCreateModal(false)}
-        />
-      )}
+      {isShowCreateModal && <CreateAppModal appIcon={currApp?.app.icon || ""} appIconBackground={currApp?.app.icon_background || ""} appName={currApp?.app.name || ""} appDescription={currApp?.app.description || ""} show={isShowCreateModal} onConfirm={onCreate} onHide={() => setIsShowCreateModal(false)} />}
     </div>
   )
 }

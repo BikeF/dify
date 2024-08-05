@@ -57,15 +57,15 @@ gtag('config', 'AW-11217955271"');
       <div
         className={cn(
           style.background,
-          'flex w-full min-h-screen',
-          'sm:p-4 lg:p-8',
+          'flex min-h-screen h-full',
+          'sm:p-4 lg:py-9',
           'gap-x-20',
           'justify-center lg:justify-start',
         )}
       >
         <div
           className={cn(
-            'flex w-full flex-col bg-white shadow rounded-2xl shrink-0',
+            'flex w-full lg:w-[1200px] mx-auto flex-col h-full justify-between',
             'space-between',
           )}
         >
@@ -87,10 +87,12 @@ gtag('config', 'AW-11217955271"');
             <>
               <Forms />
               <div className="px-8 py-6 text-sm font-normal text-gray-500 flex justify-between items-center">
+                <div></div>
                 <div>
-                </div>
-                <div>
-                  <Button className="w-full hover:!bg-gray-50" onClick={toPrice}>
+                  <Button
+                    className="w-full hover:!bg-gray-50"
+                    onClick={toPrice}
+                  >
                     <>
                       <span className="truncate text-gray-800">
                         {t('login.price')}

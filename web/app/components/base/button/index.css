@@ -21,6 +21,10 @@
     @apply px-4 h-9 rounded-[10px] text-sm font-semibold
   }
 
+  .btn-big {
+    @apply px-4 py-3 rounded-[30px] text-xl shadow-btn
+  }
+
   .btn-secondary {
     @apply bg-white hover:bg-white/80 border-gray-200 hover:border-gray-300 text-gray-700;
   }
@@ -31,6 +35,10 @@
 
   .btn-primary {
     @apply bg-primary-600 hover:bg-primary-700 text-white;
+  }
+
+  .btn-primary-linear {
+    @apply bg-primarylinear hover:bg-primary-100 text-white hover:bg-primarylinearhover;
   }
 
   .btn-warning {

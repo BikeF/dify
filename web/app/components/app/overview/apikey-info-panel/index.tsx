@@ -27,7 +27,7 @@ const APIKeyInfoPanel: FC = () => {
     return null
 
   return (
-    <div className={cn('bg-[#EFF4FF] border-[#D1E0FF]', 'mb-6 relative  rounded-2xl shadow-md border  p-8 ')}>
+    <div className={cn('bg-primary-50 border-primary-400', 'mb-6 relative  rounded-2xl shadow-md border  p-8 ')}>
       <div className={cn('text-[24px] text-gray-800 font-semibold', isCloud ? 'flex items-center h-8 space-x-1' : 'leading-8 mb-6')}>
         {isCloud && <em-emoji id={'😀'} />}
         {isCloud
@@ -54,7 +54,7 @@ const APIKeyInfoPanel: FC = () => {
       </Button>
       {!isCloud && (
         <a
-          className='mt-2 flex items-center h-[26px] text-xs  font-medium text-[#155EEF] p-1 space-x-1'
+          className='mt-2 flex items-center h-[26px] text-xs  font-medium text-primary-500 p-1 space-x-1'
           href='https://cloud.dify.ai/apps'
           target='_blank' rel='noopener noreferrer'
         >
