@@ -23,11 +23,12 @@ export default class AudioPlayer {
   isPublic: boolean
   callback: ((event: string) => {}) | null
 
-  constructor(streamUrl: string, isPublic: boolean, msgId: string | undefined, msgContent: string | null | undefined, callback: ((event: string) => {}) | null) {
+  constructor(streamUrl: string, isPublic: boolean, msgId: string | undefined, msgContent: string | null | undefined, voice: string | undefined, callback: ((event: string) => {}) | null) {
     this.audioContext = new AudioContext()
     this.msgId = msgId
     this.msgContent = msgContent
     this.url = streamUrl
+    this.voice = voice
     this.isPublic = isPublic
     this.callback = callback
 
