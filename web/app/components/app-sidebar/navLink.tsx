@@ -36,6 +36,7 @@ export default function NavLink({
 
     return res
   })()
+  console.log('123123f', segment)
   const isActive = href.toLowerCase().split('/')?.pop() === formattedSegment
   const NavIcon = isActive ? iconMap.selected : iconMap.normal
 

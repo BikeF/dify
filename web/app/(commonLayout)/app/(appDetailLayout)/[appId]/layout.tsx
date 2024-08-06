@@ -135,15 +135,18 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
     )
   }
 
+  const isVertical = false
   return (
-    <div className={cn(s.app, 'flex', 'overflow-hidden')}>
-      {appDetail && (
-        <AppSideBar title={appDetail.name} icon={appDetail.icon} icon_background={appDetail.icon_background} desc={appDetail.mode} navigation={navigation} />
-      )}
-      <div className="bg-white grow overflow-hidden">
-        {children}
+    <>
+      <div className={cn(s.app, isVertical ? 'flex' : '', 'overflow-hidden')}>
+        {appDetail && (
+          <AppSideBar title={appDetail.name} isVertical={isVertical} icon={appDetail.icon} icon_background={appDetail.icon_background} desc={appDetail.mode} navigation={navigation} />
+        )}
+        <div className={cn('bg-white grow overflow-hidden h-full', isVertical ? '' : 'p-[5px]')}>
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default React.memo(AppDetailLayout)

@@ -10,10 +10,14 @@ import {
 import classNames from '@/utils/classnames'
 type ToolsNavProps = {
   className?: string
+  isVertical?: boolean
+  expand?: boolean
 }
 
 const ToolsNav = ({
   className,
+  isVertical = false,
+  expand = true,
 }: ToolsNavProps) => {
   const { t } = useTranslation()
   const selectedSegment = useSelectedLayoutSegment()
@@ -24,13 +28,15 @@ const ToolsNav = ({
       className, 'group',
       actived && 'bg-white shadow-md',
       actived ? 'text-primary-600' : 'text-gray-500 hover:bg-gray-200',
+      isVertical && 'w-full',
+      expand ? '' : '!p-0 !mr-0',
     )}>
       {
         actived
-          ? <RiHammerFill className='mr-2 w-4 h-4' />
-          : <RiHammerLine className='mr-2 w-4 h-4' />
+          ? <RiHammerFill className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
+          : <RiHammerLine className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
       }
-      {t('common.menus.tools')}
+      {expand && t('common.menus.tools')}
     </Link>
   )
 }

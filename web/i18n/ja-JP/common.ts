@@ -359,7 +359,7 @@ const translation = {
   },
   appMenus: {
     overview: '概要',
-    promptEng: 'Orchestrate',
+    promptEng: 'アプリケーションデザイン',
     apiAccess: 'APIアクセス',
     logAndAnn: 'ログ＆アナウンス',
     logs: 'ログ',

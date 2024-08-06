@@ -5,20 +5,21 @@ import classNames from "@/utils/classnames"
 import SideBar from '@/app/components/sidebar'
 
 type ContentWrapperProps = {
-  SideBar: React.ReactNode
   children: React.ReactNode
 }
 
 const ContentWrapper = ({ children }: ContentWrapperProps) => {
   const pathname = usePathname()
-  const isBordered = ["/apps", "/datasets", "/datasets/create", "/tools"].includes(pathname)
+  const isBordered = ["/explore/apps", "/apps", "/datasets", "/tools"].includes(pathname)
+
+  const isAppEdit = /\/app\/[a-z|0-9|\-]+\/[configuration|workflow|develop|logs|overview]/.test(pathname)
 
   return (
-    <div className={classNames("flex ", "bg-gray-300", c.contentLayout)}>
-      <div className="m-[5px]">
+    <div className={classNames("flex grow overflow-y-auto overflow-x-hidden", isAppEdit ? "" : 'm-[5px]', c.contentLayout)}>
+      {isBordered && <div className="mr-[5px] h-full">
         <SideBar></SideBar>
-      </div>
-      <div className="grow">{children}</div>
+      </div>}
+      <div className="grow h-full flex flex-col overflow-y-auto overflow-x-hidden">{children}</div>
     </div>
   )
 }

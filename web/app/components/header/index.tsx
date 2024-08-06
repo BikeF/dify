@@ -67,14 +67,6 @@ const Header = () => {
           </Link>
         </div>
       )}
-      {!isMobile && (
-        <div className='flex items-center'>
-          {!isCurrentWorkspaceDatasetOperator && <ExploreNav className={navClassName} />}
-          {!isCurrentWorkspaceDatasetOperator && <AppNav />}
-          {(isCurrentWorkspaceEditor || isCurrentWorkspaceDatasetOperator) && <DatasetNav />}
-          {!isCurrentWorkspaceDatasetOperator && <ToolsNav className={navClassName} />}
-        </div>
-      )}
       <div className='flex items-center flex-shrink-0'>
         <EnvNav />
         {enableBilling && (

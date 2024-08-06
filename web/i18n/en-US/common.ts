@@ -443,10 +443,10 @@ const translation = {
   },
   appMenus: {
     overview: 'Monitoring',
-    promptEng: 'Orchestrate',
+    promptEng: 'Application Design',
     apiAccess: 'API Access',
     logAndAnn: 'Logs & Ann.',
-    logs: 'Logs',
+    logs: 'History Records',
   },
   environment: {
     testing: 'TESTING',

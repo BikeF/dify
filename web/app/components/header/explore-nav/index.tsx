@@ -10,10 +10,14 @@ import {
 import classNames from '@/utils/classnames'
 type ExploreNavProps = {
   className?: string
+  isVertical?: boolean
+  expand?: boolean
 }
 
 const ExploreNav = ({
   className,
+  isVertical = false,
+  expand = true,
 }: ExploreNavProps) => {
   const { t } = useTranslation()
   const selectedSegment = useSelectedLayoutSegment()
@@ -24,13 +28,15 @@ const ExploreNav = ({
       className, 'group',
       actived && 'bg-white shadow-md',
       actived ? 'text-primary-600' : 'text-gray-500 hover:bg-gray-200',
+      isVertical ? 'w-full' : '',
+      expand ? '' : '!mr-0 px-0',
     )}>
       {
         actived
-          ? <RiPlanetFill className='mr-2 w-4 h-4' />
-          : <RiPlanetLine className='mr-2 w-4 h-4' />
+          ? <RiPlanetFill className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
+          : <RiPlanetLine className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
       }
-      {t('common.menus.explore')}
+      {expand && t('common.menus.explore')}
     </Link>
   )
 }

@@ -407,11 +407,11 @@ const translation = {
     latestAvailable: 'Agent Studio {{version}} 已是最新版本。',
   },
   appMenus: {
-    overview: '概覽',
-    promptEng: '編排',
+    overview: '數據',
+    promptEng: '應用設計',
     apiAccess: '訪問 API',
     logAndAnn: '日誌與標註',
-    logs: '日誌',
+    logs: '歷史紀錄',
   },
   environment: {
     testing: '測試環境',

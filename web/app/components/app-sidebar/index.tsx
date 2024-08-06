@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { useShallow } from 'zustand/react/shallow'
+import { ArrowLeftIcon } from '@heroicons/react/24/solid'
+import Button from '../base/button'
 import NavLink from './navLink'
 import type { NavIcon } from './navLink'
 import AppBasic from './basic'
@@ -17,6 +19,7 @@ export type IAppDetailNavProps = {
   desc: string
   icon: string
   icon_background: string
+  isVertical?: boolean
   navigation: Array<{
     name: string
     href: string
@@ -26,7 +29,7 @@ export type IAppDetailNavProps = {
   extraInfo?: (modeState: string) => React.ReactNode
 }
 
-const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInfo, iconType = 'app' }: IAppDetailNavProps) => {
+const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInfo, iconType = 'app', isVertical = true }: IAppDetailNavProps) => {
   const { appSidebarExpand, setAppSiderbarExpand } = useAppStore(useShallow(state => ({
     appSidebarExpand: state.appSidebarExpand,
     setAppSiderbarExpand: state.setAppSiderbarExpand,
@@ -46,19 +49,28 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
     }
   }, [appSidebarExpand, setAppSiderbarExpand])
 
+  const goback = () => {
+    window.location.href = '/apps'
+  }
   return (
     <div
       className={`
-        shrink-0 flex flex-col bg-white border-r border-gray-200 transition-all
+        shrink-0 flex bg-white border-r border-gray-200 transition-all
         ${expand ? 'w-[216px]' : 'w-14'}
+        ${isVertical ? 'flex-col' : 'flex-row w-full justify-between py-1 mb-1 px-4'}
       `}
     >
       <div
         className={`
+          flex items-center
           shrink-0
-          ${expand ? 'p-3' : 'p-2'}
+          ${isVertical ? (expand ? 'p-3' : 'p-2') : ''}
         `}
       >
+        <div className='flex items-center mr-4 cursor-pointer' onClick={() => { goback() }}>
+          <Button className='h-6 px-1 py-0'><ArrowLeftIcon className='w-4 h-4' /></Button>
+          <span className='text-gray-700 text-sm ml-2'>返回</span>
+        </div>
         {iconType === 'app' && (
           <AppInfo expand={expand}/>
         )}
@@ -78,8 +90,8 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
       )}
       <nav
         className={`
-          grow space-y-1 bg-white
-          ${expand ? 'p-4' : 'px-2.5 py-4'}
+           bg-white
+          ${isVertical ? (expand ? 'p-4 grow space-y-1' : 'px-2.5 py-4 grow space-x-1') : 'flex items-center p-0'}
         `}
       >
         {navigation.map((item, index) => {
@@ -90,7 +102,7 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
         {extraInfo && extraInfo(appSidebarExpand)}
       </nav>
       {
-        !isMobile && (
+        (isVertical && !isMobile) && (
           <div
             className={`
               shrink-0 py-3
@@ -109,6 +121,9 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
             </div>
           </div>
         )
+      }
+      {
+        !isVertical && <div></div>
       }
     </div>
   )

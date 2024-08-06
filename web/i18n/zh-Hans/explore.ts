@@ -21,7 +21,7 @@ const translation = {
     allCategories: '推荐',
   },
   appCard: {
-    addToWorkspace: '添加到工作区',
+    addToWorkspace: '使用模板',
     customize: '自定义',
   },
   appCustomize: {

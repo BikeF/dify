@@ -438,11 +438,11 @@ const translation = {
     latestAvailable: 'Agent Studio {{version}} 已是最新版本。',
   },
   appMenus: {
-    overview: '监测',
-    promptEng: '编排',
+    overview: '数据',
+    promptEng: '应用设计',
     apiAccess: '访问 API',
     logAndAnn: '日志与标注',
-    logs: '日志',
+    logs: '历史记录',
   },
   environment: {
     testing: '测试环境',

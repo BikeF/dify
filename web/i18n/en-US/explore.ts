@@ -21,7 +21,7 @@ const translation = {
     allCategories: 'Recommended',
   },
   appCard: {
-    addToWorkspace: 'Add to Workspace',
+    addToWorkspace: 'Use APP',
     customize: 'Customize',
   },
   appCustomize: {
