@@ -189,7 +189,7 @@ const AppInfo = ({ expand }: IAppInfoProps) => {
               </span>
             </div>
             {expand && (
-              <div className="grow w-0">
+              <div className="grow">
                 <div className='flex justify-between items-center text-sm leading-5 font-medium text-gray-900'>
                   <div className='truncate' title={appDetail.name}>{appDetail.name}</div>
                   {isCurrentWorkspaceEditor && <RiArrowDownSLine className='shrink-0 ml-[2px] w-3 h-3 text-gray-500' />}
@@ -248,7 +248,7 @@ const AppInfo = ({ expand }: IAppInfoProps) => {
                   )}
                 </span>
               </div>
-              <div className='grow'>
+              <div className='grow w-0'>
                 <div title={appDetail.name} className='flex justify-between items-center text-sm leading-5 font-medium text-gray-900 truncate'>{appDetail.name}</div>
                 <div className='flex items-center text-[10px] leading-[18px] font-medium text-gray-500 gap-1'>
                   {appDetail.mode === 'advanced-chat' && (
