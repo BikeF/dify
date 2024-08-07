@@ -248,7 +248,7 @@ const AppInfo = ({ expand }: IAppInfoProps) => {
                   )}
                 </span>
               </div>
-              <div className='grow w-0'>
+              <div className='grow'>
                 <div title={appDetail.name} className='flex justify-between items-center text-sm leading-5 font-medium text-gray-900 truncate'>{appDetail.name}</div>
                 <div className='flex items-center text-[10px] leading-[18px] font-medium text-gray-500 gap-1'>
                   {appDetail.mode === 'advanced-chat' && (

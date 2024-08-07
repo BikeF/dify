@@ -138,7 +138,7 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
   const isVertical = false
   return (
     <>
-      <div className={cn(s.app, isVertical ? 'flex' : '', 'overflow-hidden')}>
+      <div className={cn(s.app, isVertical ? '' : 'flex-col', 'flex overflow-hidden')}>
         {appDetail && (
           <AppSideBar title={appDetail.name} isVertical={isVertical} icon={appDetail.icon} icon_background={appDetail.icon_background} desc={appDetail.mode} navigation={navigation} />
         )}
