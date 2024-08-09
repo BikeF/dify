@@ -67,10 +67,10 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
           ${isVertical ? (expand ? 'p-3' : 'p-2') : ''}
         `}
       >
-        <div className='flex items-center mr-4 cursor-pointer' onClick={() => { goback() }}>
+        {!isVertical && <div className='flex items-center mr-4 cursor-pointer' onClick={() => { goback() }}>
           <Button className='h-6 px-1 py-0'><ArrowLeftIcon className='w-4 h-4' /></Button>
           <span className='text-gray-700 text-sm ml-2'>返回</span>
-        </div>
+        </div>}
         {iconType === 'app' && (
           <AppInfo expand={expand}/>
         )}
