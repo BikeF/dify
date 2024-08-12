@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>切片</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="工作流-场景设计" transform="translate(-233.000000, -797.000000)" fill="currentColor" fill-rule="nonzero">
+            <g id="icon/line/缩小备份" transform="translate(233.000000, 797.000000)">
+                <g id="chexiao-2" transform="translate(3.000000, 5.000000)">
+                    <path d="M5.6117647,0 L7.2,1.58823529 L5.29411764,3.49411765 L12.7058824,3.49411765 C15.6705883,3.49411765 18,5.82352942 18,8.78823531 C18,11.7529412 15.6705882,14.082353 12.7058824,14.082353 L3.17647059,14.082353 L3.17647059,11.9647059 L12.7058824,11.9647059 C14.5058824,11.9647059 15.8823529,10.5882353 15.8823529,8.78823531 C15.8823529,6.98823532 14.5058824,5.61176473 12.7058824,5.61176473 L7.05318157e-16,5.61176473 L5.6117647,0 Z" id="路径"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

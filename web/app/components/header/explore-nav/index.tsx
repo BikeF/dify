@@ -3,10 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
-import {
-  RiPlanetFill,
-  RiPlanetLine,
-} from '@remixicon/react'
+
 import classNames from '@/utils/classnames'
 type ExploreNavProps = {
   className?: string
@@ -31,11 +28,11 @@ const ExploreNav = ({
       isVertical ? 'w-full' : '',
       expand ? '' : '!mr-0 px-0',
     )}>
-      {
+      {/* {
         actived
           ? <RiPlanetFill className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
           : <RiPlanetLine className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
-      }
+      } */}
       {expand && t('common.menus.explore')}
     </Link>
   )

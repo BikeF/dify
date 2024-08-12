@@ -3,11 +3,9 @@ import type { FC } from 'react'
 import { Fragment, memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useParams, useSelectedLayoutSegments } from 'next/navigation'
-import {
-  RiAddLine,
-} from '@remixicon/react'
 import { Menu, Transition } from '@headlessui/react'
 import useSWRInfinite from 'swr/infinite'
+import { RiAddLine } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import useBreakpoints, { MediaType } from '@/hooks/use-breakpoints'
 import AppNav from '@/app/components/header/app-nav'
@@ -117,7 +115,7 @@ const SideBar: FC = () => {
                       disabled={isLoading}
                       className="w-full mb-8 p-0"
                     >
-                      <RiAddLine className='w-4 h-4'/>
+                      <RiAddLine className='w-4 h-4 mr-1 -mt-[2px]'/>
                       {expand && t("common.menus.newApp")}
                     </Button>
                   </Menu.Button>

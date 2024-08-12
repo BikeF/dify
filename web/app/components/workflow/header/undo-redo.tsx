@@ -1,12 +1,9 @@
 import type { FC } from 'react'
 import { memo, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  RiArrowGoBackLine,
-  RiArrowGoForwardFill,
-} from '@remixicon/react'
 import TipPopup from '../operator/tip-popup'
 import { useWorkflowHistoryStore } from '../workflow-history-store'
+import { RiArrowGoBackLine, RiArrowGoForwardFill } from '@/app/components/base/icons/svgr'
 import { useNodesReadOnly } from '@/app/components/workflow/hooks'
 import ViewWorkflowHistory from '@/app/components/workflow/header/view-workflow-history'
 

@@ -9,7 +9,6 @@ import {
 } from 'reactflow'
 import {
   RiCloseLine,
-  RiListCheck3,
 } from '@remixicon/react'
 import BlockIcon from '../block-icon'
 import {
@@ -20,6 +19,7 @@ import type {
   CommonEdgeType,
   CommonNodeType,
 } from '../types'
+import { RiListCheck3 } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import {
   PortalToFollowElem,

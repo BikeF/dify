@@ -6,16 +6,18 @@ import { usePathname, useRouter } from 'next/navigation'
 import {
   RiDashboard2Fill,
   RiDashboard2Line,
-  RiFileList3Fill,
-  RiFileList3Line,
-  RiTerminalBoxFill,
-  RiTerminalBoxLine,
-  RiTerminalWindowFill,
-  RiTerminalWindowLine,
 } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import { useShallow } from 'zustand/react/shallow'
 import s from './style.module.css'
+import {
+  RiFileList3Fill,
+  RiFileList3Line,
+  ApiIconActive as RiTerminalBoxFill,
+  ApiIcon as RiTerminalBoxLine,
+  RiTerminalWindowFill,
+  RiTerminalWindowLine,
+} from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import { useStore } from '@/app/components/app/store'
 import AppSideBar from '@/app/components/app-sidebar'

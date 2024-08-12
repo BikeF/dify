@@ -44,7 +44,7 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
 
   useEffect(() => {
     if (appSidebarExpand) {
-      localStorage.setItem('app-detail-collapse-or-expand', appSidebarExpand)
+      // localStorage.setItem('app-detail-collapse-or-expand', appSidebarExpand)
       setAppSiderbarExpand(appSidebarExpand)
     }
   }, [appSidebarExpand, setAppSiderbarExpand])

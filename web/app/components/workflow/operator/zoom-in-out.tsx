@@ -5,10 +5,7 @@ import {
   useCallback,
   useState,
 } from 'react'
-import {
-  RiZoomInLine,
-  RiZoomOutLine,
-} from '@remixicon/react'
+
 import { useKeyPress } from 'ahooks'
 import { useTranslation } from 'react-i18next'
 import {
@@ -26,6 +23,7 @@ import {
 } from '../utils'
 import ShortcutsName from '../shortcuts-name'
 import TipPopup from './tip-popup'
+import { RiZoomInLine, RiZoomOutLine } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import {
   PortalToFollowElem,

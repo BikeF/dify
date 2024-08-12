@@ -6,7 +6,6 @@ import {
 } from 'react'
 import {
   RiCloseLine,
-  RiHistoryLine,
 } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import { useShallow } from 'zustand/react/shallow'
@@ -17,6 +16,7 @@ import {
 } from '../hooks'
 import TipPopup from '../operator/tip-popup'
 import type { WorkflowHistoryState } from '../workflow-history-store'
+import { RiHistoryLine } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import {
   PortalToFollowElem,

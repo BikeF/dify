@@ -3,7 +3,6 @@ import {
   useCallback,
   useState,
 } from 'react'
-import { RiAddCircleFill } from '@remixicon/react'
 import { useStoreApi } from 'reactflow'
 import { useTranslation } from 'react-i18next'
 import type { OffsetOptions } from '@floating-ui/react'
@@ -18,6 +17,7 @@ import {
 import { NODES_INITIAL_DATA } from '../constants'
 import { useWorkflowStore } from '../store'
 import TipPopup from './tip-popup'
+import { RiAddCircleFill } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import BlockSelector from '@/app/components/workflow/block-selector'
 import type {

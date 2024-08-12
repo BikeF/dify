@@ -3,10 +3,7 @@
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
-import {
-  RiHammerFill,
-  RiHammerLine,
-} from '@remixicon/react'
+
 import classNames from '@/utils/classnames'
 type ToolsNavProps = {
   className?: string
@@ -31,11 +28,11 @@ const ToolsNav = ({
       isVertical && 'w-full',
       expand ? '' : '!p-0 !mr-0',
     )}>
-      {
+      {/* {
         actived
           ? <RiHammerFill className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
           : <RiHammerLine className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
-      }
+      } */}
       {expand && t('common.menus.tools')}
     </Link>
   )

@@ -6,7 +6,6 @@ import { useSelectedLayoutSegment } from 'next/navigation'
 import type { INavSelectorProps } from './nav-selector'
 import NavSelector from './nav-selector'
 import classNames from '@/utils/classnames'
-import { ArrowNarrowLeft } from '@/app/components/base/icons/src/vender/line/arrows'
 import { useStore as useAppStore } from '@/app/components/app/store'
 
 type INavProps = {
@@ -60,7 +59,7 @@ const Nav = ({
           onMouseEnter={() => setHovered(true)}
           onMouseLeave={() => setHovered(false)}
         >
-          <div className={expand ? 'mr-2' : 'ml-[2px]'}>
+          {/* <div className={expand ? 'mr-2' : 'ml-[2px]'}>
             {
               (hovered && curNav)
                 ? <ArrowNarrowLeft className='w-4 h-4' />
@@ -68,7 +67,7 @@ const Nav = ({
                   ? activeIcon
                   : icon
             }
-          </div>
+          </div> */}
           {expand && text}
         </div>
       </Link>
