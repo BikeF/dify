@@ -23,18 +23,17 @@ module.exports = {
           900: '#101828',
         },
         primary: {
-          25: '#FFE3B6', // 基础颜色
-          50: '#FFF4E1', // 非常浅的橙色
-          100: '#FFE3B6', // 较浅的橙色
-          200: '#FFD49B', // 中等偏亮的橙色
-          300: '#FFC77F', // 较亮的橙色
-          400: '#FFBA63', // 明亮的橙色
-          500: '#F4AA3F', // 当前的600色
-          600: '#F4AA3F', // 结构色
-          700: '#D78D32', // 较深的橙色
-          800: '#A76F27', // 更深的橙色
-          900: '#7A4D17', // 最深的橙色
-
+          25: '#e0f2e9', // 最浅的颜色
+          50: '#e0f2e9', // 最浅的颜色
+          100: '#b2e0c0',
+          200: '#80d3a8',
+          300: '#4fca8c',
+          400: '#3ab87a',
+          500: '#029156', // 主要颜色
+          600: '#027d4d',
+          700: '#02643a',
+          800: '#025729',
+          900: '#023d1a', // 最深的颜色
         },
         blue: {
           500: '#E1EFFE',
@@ -65,11 +64,11 @@ module.exports = {
         ...tailwindThemeVarDefine,
       },
       backgroundImage: {
-        primarylinear: 'linear-gradient( 145deg, #FFBA0B 0%, #FF9E11 100%)',
-        primarylinearhover: 'linear-gradient( 145deg, #F4CB63 0%, #F4AA3F 100%)',
-        primaryLinearText: 'linear-gradient(91.58deg, #F4AA3F -29.55%, #FFF4E1 75.22%)',
-        primaryLinearText2: 'linear-gradient(to right, #F4AA3F 0, #FFE3B6 100%)',
-        primaryLinearText3: 'linear-gradient(90deg, #FFCE51 0%, #FF9905 100%);',
+        primarylinear: 'linear-gradient( 145deg, #02A762 0%, #029156 100%)',
+        primarylinearhover: 'linear-gradient( 145deg, #4fca8c 0%, #029156 100%)',
+        primaryLinearText: 'linear-gradient(91.58deg, #029156 -29.55%, #FFF4E1 75.22%)',
+        primaryLinearText2: 'linear-gradient(to right, #029156 0, #FFE3B6 100%)',
+        primaryLinearText3: 'linear-gradient(90deg, #4fca8c 0%, #029156 100%);',
       },
       screens: {
         mobile: '100px',

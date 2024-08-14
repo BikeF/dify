@@ -41,7 +41,7 @@ const DatasetSvg = <svg width="20" height="20" viewBox="0 0 20 20" fill="none" x
 
 const WebappSvg = <svg width="20" height="20" viewBox="0 0 35 34" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-    <g id="工作流-数据" transform="translate(-91.000000, -218.000000)" fill="#F4AA3F" fill-rule="nonzero">
+    <g id="工作流-数据" transform="translate(-91.000000, -218.000000)" fill="#029156" fill-rule="nonzero">
       <g id="编组-2" transform="translate(84.000000, 208.000000)">
         <g id="icon/line/聊天助手" transform="translate(7.705412, 10.000000)">
           <g id="exam_index12" transform="translate(2.914286, 4.857143)">

@@ -7,7 +7,7 @@ const Topbar = () => {
     <>
       <ProgressBar
         height='2px'
-        color="#F4AA3F"
+        color="#029156"
         options={{ showSpinner: false }}
         shallowRouting />
     </>)
