@@ -90,12 +90,12 @@ const ModelProviderPage = () => {
 
   return (
     <div className='relative pt-1 -mt-2'>
-      <div className={`flex items-center justify-between mb-2 h-8 ${defaultModelNotConfigured && 'px-3 bg-[#FFFAEB] rounded-lg border border-[#FEF0C7]'}`}>
+      <div className={`flex items-center justify-between mb-2 h-8 ${defaultModelNotConfigured && 'px-3 bg-primary-50 rounded-lg border border-primary-400'}`}>
         {
           defaultModelNotConfigured
             ? (
               <div className='flex items-center text-xs font-medium text-gray-700'>
-                <AlertTriangle className='mr-1 w-3 h-3 text-[#F79009]' />
+                <AlertTriangle className='mr-1 w-3 h-3 text-primary-500' />
                 {t('common.modelProvider.notConfigured')}
               </div>
             )

@@ -217,7 +217,7 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
   </Col>
   <Col sticky>
 
-    <CodeGroup title="Request" tag="POST" label="/chat-messages" targetCode={`curl -X POST '${props.appDetail.api_base_url}/chat-messages' \\\n--header 'Authorization: Bearer {api_key}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    "inputs": ${JSON.stringify(props.inputs)},\n    "query": "What are the specs of the iPhone 13 Pro Max?",\n    "response_mode": "streaming",\n    "conversation_id": "",\n    "user": "abc-123",\n    "files": [\n      {\n        "type": "image",\n        "transfer_method": "remote_url",\n        "url": "https://cloud.dify.ai/logo/logo-site.png"\n      }\n    ]\n}'`}>
+    <CodeGroup title="Request" tag="POST" label="/chat-messages" targetCode={`curl -X POST '${props.appDetail.api_base_url}/chat-messages' \\\n--header 'Authorization: Bearer {api_key}' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    "inputs": ${JSON.stringify(props.inputs)},\n    "query": "What are the specs of the iPhone 13 Pro Max?",\n    "response_mode": "streaming",\n    "conversation_id": "",\n    "user": "abc-123",\n}'`}>
 
     ```bash {{ title: 'cURL' }}
     curl -X POST '${props.appDetail.api_base_url}/chat-messages' \
@@ -225,23 +225,23 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     -H 'Content-Type: application/json' \
     --data-raw '{
         "inputs": {
-            "name": "dify"
+            "name": "Kofe"
         },
         "query": "What are the specs of the iPhone 13 Pro Max?",
         "conversation_id": "101b4c97-fc2e-463c-90b1-5261a4cdcafb",
         "response_mode": "streaming",
         "user": "abc-123",
-        "files": [
-          {
-            "type": "image",
-            "transfer_method": "remote_url",
-            "url": "https://cloud.dify.ai/logo/logo-site.png"
-          }
-        ]
     }'
     ```
 
     </CodeGroup>
+
+    ### Python Request
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef chat_messages(api_key):\n    url = f'{props.appDetail.api_base_url}/chat-messages'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "inputs": {\n            "name": "Kofe"\n        },\n        "query": "What are the specs of the iPhone 13 Pro Max?",\n        "conversation_id": "101b4c97-fc2e-463c-90b1-5261a4cdcafb",\n        "response_mode": "streaming",\n        "user": "abc-123"\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n\n    result = chat_messages(api_key)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     ### 阻塞模式
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
@@ -361,6 +361,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef upload_file(api_key, file_path):\n    url = f'{props.appDetail.api_base_url}/files/upload'\n\n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n\n    files = {\n        'file': open(file_path, 'rb')\n    }\n\n    response = requests.post(url, headers=headers, files=files)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n    file_path = '/path/to/file'  # Path to your local file\n\n    result = upload_file(api_key, file_path)\n\n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
     {
@@ -406,6 +411,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     }'
     ```
 
+    </CodeGroup>
+
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef stop_task(task_id, api_key, user):\n    url = f'{props.appDetail.api_base_url}/chat-messages/{task_id}/stop'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "user": user\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    task_id = "your_task_id_here"\n    api_key = "{api_key}"\n    user = "abc-123"\n    \n    result = stop_task(task_id, api_key, user)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
     </CodeGroup>
 
     <CodeGroup title="Response">
@@ -464,6 +474,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     }'
     ```
 
+    </CodeGroup>
+
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef feedbacks(message_id, api_key, rating, user):\n    url = f'{props.appDetail.api_base_url}/messages/{message_id}/feedbacks'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "rating": rating,\n        "user": user\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    message_id = "your_message_id_here"\n    api_key = "{api_key}"  # Replace with your actual API key\n    rating = "like"\n    user = "abc-123"\n    \n    result = feedbacks(message_id, api_key, rating, user)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
     </CodeGroup>
 
     <CodeGroup title="Response">
@@ -591,6 +606,12 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    ### Python Request
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef query_messages(api_key, user):\n    url = f'{props.appDetail.api_base_url}/messages?user={user}&conversation_id='\n\n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n\n    response = requests.get(url, headers=headers)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n\n    messages = query_messages(api_key, user)\n\n    if messages:\n        print("Success:", messages)\n    else:\n        print("Request failed with error:", messages[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     ### Response Example
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
@@ -602,7 +623,7 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
             "id": "a076a87f-31e5-48dc-b452-0061adbbc922",
             "conversation_id": "cd78daf6-f9e4-4463-9ff2-54257230a0ce",
             "inputs": {
-                "name": "dify"
+                "name": "Kofe"
             },
             "query": "iphone 13 pro",
             "answer": "The iPhone 13 Pro, released on September 24, 2021, features a 6.1-inch display with a resolution of 1170 x 2532. It is equipped with a Hexa-core (2x3.23 GHz Avalanche + 4x1.82 GHz Blizzard) processor, 6 GB of RAM, and offers storage options of 128 GB, 256 GB, 512 GB, and 1 TB. The camera is 12 MP, the battery capacity is 3095 mAh, and it runs on iOS 15.",
@@ -710,6 +731,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef get_conversations(api_key, user):\n    url = f'{props.appDetail.api_base_url}/conversations?user={user}&last_id=&limit=20'\n\n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n\n    response = requests.get(url, headers=headers)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n\n    conversations = get_conversations(api_key, user)\n\n    # Processing the response would go here, but no print statements are included\n    # to ensure that __name__ == "__main__" does not produce output.\n\n    # For demonstration purposes, let's print the result outside of the __main__ block.\n    if conversations:\n        print("Success:", conversations)\n    else:\n        print("Request failed with error:", conversations[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
     {
@@ -778,6 +804,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef get_conversations(api_key, user):\n    url = f'{props.appDetail.api_base_url}/conversations?user={user}&last_id=&limit=20'\n\n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n\n    response = requests.get(url, headers=headers)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n\n    conversations = get_conversations(api_key, user)\n\n    # Processing the response would go here, but no print statements are included\n    # to ensure that __name__ == "__main__" does not produce output.\n\n    # For demonstration purposes, let's print the result outside of the __main__ block.\n    if conversations:\n        print("Success:", conversations)\n    else:\n        print("Request failed with error:", conversations[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
     {
@@ -837,6 +868,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef update_conversation_name(api_key, conversation_id):\n    url = f'{props.appDetail.api_base_url}/conversations/{conversation_id}/name'\n\n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n\n    payload = {\n        "name": "",\n        "user": "abc-123"\n    }\n\n    response = requests.post(url, json=payload, headers=headers)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    conversation_id = "your_conversation_id_here"\n\n    result = update_conversation_name(api_key, conversation_id)\n\n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
     {
@@ -883,6 +919,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     --form 'file=@localfile;type=audio/mp3'
     ```
 
+    </CodeGroup>
+
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef create_conversation(api_key, file_path):\n    url = f'{props.appDetail.api_base_url}/conversations/name'\n\n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n\n    files = {\n        'file': (file_path, open(file_path, 'rb'), 'audio/mp3')\n    }\n\n    response = requests.post(url, headers=headers, files=files)\n\n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n    file_path = 'localfile'  # Path to your local audio file\n\n    result = create_conversation(api_key, file_path)\n\n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
     </CodeGroup>
 
     <CodeGroup title="Response">
@@ -1016,6 +1057,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
 
     </CodeGroup>
 
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef get_parameters(api_key, user):\n    url = f'{props.appDetail.api_base_url}/parameters?user={user}'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n    \n    response = requests.get(url, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n    \n    parameters = get_parameters(api_key, user)\n    \n    # Processing the response would go here, but no print statements are included\n    # to ensure that __name__ == "__main__" does not produce output.\n    \n    # For demonstration purposes, let's print the result outside of the __main__ block.\n    if parameters:\n        print("Success:", parameters)\n    else:\n        print("Request failed with error:", parameters[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
     {
@@ -1084,6 +1130,11 @@ import { Row, Col, Properties, Property, Heading, SubProperty } from '../md.tsx'
     -H 'Authorization: Bearer {api_key}'
     ```
 
+    </CodeGroup>
+
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef get_meta(api_key, user):\n    url = f'{props.appDetail.api_base_url}/meta?user={user}'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n    \n    response = requests.get(url, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n    \n    meta_info = get_meta(api_key, user)\n    \n    # Processing the response would go here, but no print statements are included\n    # to ensure that __name__ == "__main__" does not produce output.\n    \n    # For demonstration purposes, let's print the result outside of the __main__ block.\n    if meta_info:\n        print("Success:", meta_info)\n    else:\n        print("Request failed with error:", meta_info[1])`}>
+      ```python
+      ```
     </CodeGroup>
 
     <CodeGroup title="Response">

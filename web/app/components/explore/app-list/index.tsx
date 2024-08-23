@@ -159,18 +159,15 @@ const Apps = ({
   }
 
   return (
-    <div className={cn(
-      'flex flex-col',
-      pageType === PageType.EXPLORE ? 'h-full border-l border-gray-200' : 'h-[calc(100%-56px)]',
-    )}>
+    <div className={cn("flex flex-col bg-gray-200 rounded", pageType === PageType.EXPLORE ? `h-full border-gray-200 ${s.appListBg}` : "h-[calc(100%-56px)]")}>
       {pageType === PageType.EXPLORE && (
-        <div className='shrink-0 pt-6 px-12'>
-          <div className={`mb-1 ${s.textGradient} text-xl font-semibold`}>{t('explore.apps.title')}</div>
-          <div className='text-gray-500 text-sm'>{t('explore.apps.description')}</div>
+        <div className="shrink-0 pt-6 px-12 text-center">
+          <div className={`mb-1 ${s.textGradient} text-2xl font-semibold`}>{t("explore.apps.title")}</div>
+          <div className="text-gray-500 text-sm">{t("explore.apps.description")}</div>
         </div>
       )}
       <div className={cn(
-        'flex items-center justify-between mt-6',
+        'flex items-center mt-6',
         pageType === PageType.EXPLORE ? 'px-12' : 'px-8',
       )}>
         <>
@@ -193,7 +190,7 @@ const Apps = ({
 
       <div className={cn(
         'relative flex flex-1 pb-6 flex-col overflow-auto bg-gray-100 shrink-0 grow',
-        pageType === PageType.EXPLORE ? 'mt-4' : 'mt-0 pt-2',
+        pageType === PageType.EXPLORE ? 'mt-6' : 'mt-0 pt-2 bg-gray-100',
       )}>
         <nav
           className={cn(

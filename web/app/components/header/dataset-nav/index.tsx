@@ -21,7 +21,10 @@ const getKey = (pageIndex: number, previousPageData: DataSetListResponse) => {
   return null
 }
 
-const DatasetNav = () => {
+const DatasetNav = ({
+  isVertical = false,
+  expand = true,
+}) => {
   const { t } = useTranslation()
   const router = useRouter()
   const { datasetId } = useParams()
@@ -47,6 +50,8 @@ const DatasetNav = () => {
       text={t('common.menus.datasets')}
       activeSegment='datasets'
       link='/datasets'
+      isVertical={isVertical}
+      expand={expand}
       curNav={currentDataset as Omit<NavItem, 'link'>}
       navs={datasetItems.map(dataset => ({
         id: dataset.id,

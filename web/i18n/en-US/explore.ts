@@ -16,12 +16,12 @@ const translation = {
     },
   },
   apps: {
-    title: 'Explore Apps by Dify',
+    title: 'Explore Apps by Agent Studio',
     description: 'Use these template apps instantly or customize your own apps based on the templates.',
     allCategories: 'Recommended',
   },
   appCard: {
-    addToWorkspace: 'Add to Workspace',
+    addToWorkspace: 'Use APP',
     customize: 'Customize',
   },
   appCustomize: {

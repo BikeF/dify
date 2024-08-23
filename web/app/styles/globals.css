@@ -640,11 +640,11 @@ button:focus-within {
 /* border radius end */
 
 .link {
-  @apply text-blue-600 cursor-pointer hover:opacity-80 transition-opacity duration-200 ease-in-out;
+  @apply text-primary-600 cursor-pointer hover:opacity-80 transition-opacity duration-200 ease-in-out;
 }
 
 .text-gradient {
-  background: linear-gradient(91.58deg, #2250F2 -29.55%, #0EBCF3 75.22%);
+  @apply bg-primaryLinearText;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

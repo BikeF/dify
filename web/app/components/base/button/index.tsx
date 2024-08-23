@@ -10,6 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         'primary': 'btn-primary',
+        'primary-linear': 'btn-primary-linear',
         'warning': 'btn-warning',
         'secondary': 'btn-secondary',
         'secondary-accent': 'btn-secondary-accent',
@@ -21,6 +22,7 @@ const buttonVariants = cva(
         small: 'btn-small',
         medium: 'btn-medium',
         large: 'btn-large',
+        big: 'btn-big',
       },
     },
     defaultVariants: {

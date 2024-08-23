@@ -1,12 +1,5 @@
 'use client'
-import type { HTMLProps } from 'react'
 import React, { useMemo, useState } from 'react'
-import {
-  Cog8ToothIcon,
-  DocumentTextIcon,
-  PaintBrushIcon,
-  RocketLaunchIcon,
-} from '@heroicons/react/24/outline'
 import { usePathname, useRouter } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import SettingsModal from './settings'
@@ -14,6 +7,7 @@ import EmbeddedModal from './embedded'
 import CustomizeModal from './customize'
 import style from './style.module.css'
 import type { ConfigParams } from './settings'
+import { Cog8ToothIcon, DocumentTextIcon, EmbedIcon, PaintBrushIcon, RocketLaunchIcon } from '@/app/components/base/icons/svgr'
 import Tooltip from '@/app/components/base/tooltip'
 import AppBasic from '@/app/components/app-sidebar/basic'
 import { asyncRunSafe, randomString } from '@/utils'
@@ -36,10 +30,6 @@ export type IAppCardProps = {
   onChangeStatus: (val: boolean) => Promise<void>
   onSaveSiteConfig?: (params: ConfigParams) => Promise<void>
   onGenerateCode?: () => Promise<void>
-}
-
-const EmbedIcon = ({ className = '' }: HTMLProps<HTMLDivElement>) => {
-  return <div className={`${style.codeBrowserIcon} ${className}`}></div>
 }
 
 function AppCard({

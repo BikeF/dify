@@ -4,6 +4,7 @@ import SwrInitor from '@/app/components/swr-initor'
 import { AppContextProvider } from '@/context/app-context'
 import GA, { GaType } from '@/app/components/base/ga'
 import HeaderWrapper from '@/app/components/header/header-wrapper'
+import ContentWrapper from "@/app/components/content/ContentWrapper"
 import Header from '@/app/components/header'
 import { EventEmitterContextProvider } from '@/context/event-emitter'
 import { ProviderContextProvider } from '@/context/provider-context'
@@ -21,7 +22,9 @@ const Layout = ({ children }: { children: ReactNode }) => {
                 <HeaderWrapper>
                   <Header />
                 </HeaderWrapper>
-                {children}
+                <ContentWrapper>
+                  {children}
+                </ContentWrapper>
               </ModalContextProvider>
             </ProviderContextProvider>
           </EventEmitterContextProvider>

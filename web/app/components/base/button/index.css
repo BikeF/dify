@@ -109,6 +109,10 @@
     text-components-button-secondary-accent-text-disabled;
   }
 
+  .btn-primary-linear {
+    @apply bg-primarylinear hover:bg-primary-100 text-white hover:bg-primarylinearhover;
+  }
+
   .btn-warning {
     @apply 
     bg-components-button-destructive-primary-bg 

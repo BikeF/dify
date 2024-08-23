@@ -47,8 +47,8 @@ const Switch = ({ onChange, size = 'lg', defaultValue = false, disabled = false,
       }}
       className={classNames(
         wrapStyle[size],
-        enabled ? 'bg-components-toggle-bg' : 'bg-components-toggle-bg-unchecked',
-        'relative inline-flex  flex-shrink-0 cursor-pointer rounded-[5px] border-2 border-transparent transition-colors duration-200 ease-in-out',
+        enabled ? 'bg-primary-600' : 'bg-gray-200',
+        'relative inline-flex  flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
         disabled ? '!opacity-50 !cursor-not-allowed' : '',
         className,
       )}
