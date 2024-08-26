@@ -21,6 +21,10 @@
     @apply px-4 h-9 rounded-[10px] text-sm font-semibold;
   }
 
+  .btn-big {
+    @apply px-5 h-10 rounded-[20px] text-base font-semibold;
+  }
+
   .btn-primary {
     @apply 
     shadow
