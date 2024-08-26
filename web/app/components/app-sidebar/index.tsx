@@ -55,11 +55,7 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
   return (
     <div
       className={`
-<<<<<<< HEAD
-        shrink-0 flex flex-col bg-background-default-subtle border-r border-divider-burn transition-all
-=======
         shrink-0 flex bg-white border-r border-gray-200 transition-all
->>>>>>> feature/ui
         ${expand ? 'w-[216px]' : 'w-14'}
         ${isVertical ? 'flex-col' : 'flex-row w-full justify-between py-1 mb-1 px-4'}
       `}
@@ -94,13 +90,8 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
       )}
       <nav
         className={`
-<<<<<<< HEAD
-          grow space-y-1
-          ${expand ? 'p-4' : 'px-2.5 py-4'}
-=======
            bg-white
           ${isVertical ? (expand ? 'p-4 grow space-y-1' : 'px-2.5 py-4 grow space-x-1') : 'flex items-center p-0'}
->>>>>>> feature/ui
         `}
       >
         {navigation.map((item, index) => {
