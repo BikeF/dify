@@ -135,7 +135,7 @@ export const NODES_EXTRA_DATA: Record<BlockEnum, NodesExtraData> = {
     checkValid: VariableAssignerDefault.checkValid,
   },
   [BlockEnum.Assigner]: {
-    author: 'Dify',
+    author: 'Kofe',
     about: '',
     availablePrevNodes: [],
     availableNextNodes: [],
