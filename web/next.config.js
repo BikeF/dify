@@ -16,6 +16,12 @@ const withMDX = require('@next/mdx')({
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     config.plugins.push(codeInspectorPlugin({ bundler: 'webpack' }))
+
+    config.module.rules.push({
+      test: /\.svg$/,
+      resourceQuery: /url/,
+      use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+    })
     return config
   },
   productionBrowserSourceMaps: false, // enable browser source map generation during the production build

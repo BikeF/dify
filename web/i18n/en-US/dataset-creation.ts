@@ -62,7 +62,7 @@ const translation = {
       run: 'Run',
       firecrawlTitle: 'Extract web content with 🔥Firecrawl',
       firecrawlDoc: 'Firecrawl docs',
-      firecrawlDocLink: 'https://docs.dify.ai/guides/knowledge-base/sync-from-website',
+      firecrawlDocLink: 'https://docs.kofe.ai/guides/knowledge-base/sync-from-website',
       options: 'Options',
       crawlSubPage: 'Crawl sub-pages',
       limit: 'Limit',

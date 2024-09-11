@@ -28,6 +28,7 @@ export default class AudioPlayer {
     this.msgId = msgId
     this.msgContent = msgContent
     this.url = streamUrl
+    this.voice = voice
     this.isPublic = isPublic
     this.voice = voice
     this.callback = callback

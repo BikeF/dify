@@ -10,3 +10,13 @@
   background-image: url('./assets/background.png');
   background-size: cover;
 }
+
+.passwordIcon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 mb-2 w-4 h-4 bg-center bg-contain;
+  background-image: url("./assets/password.svg");
+}
+
+.emailIcon {
+  @apply absolute left-3 top-1/2 -translate-y-1/2 mb-2 w-4 h-4 bg-center bg-contain;
+  background-image: url("./assets/email.svg");
+}

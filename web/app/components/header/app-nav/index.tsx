@@ -39,7 +39,10 @@ const getKey = (
   return null
 }
 
-const AppNav = () => {
+const AppNav = ({
+  isVertical = false,
+  expand = true,
+}) => {
   const { t } = useTranslation()
   const { appId } = useParams()
   const { isCurrentWorkspaceEditor } = useAppContext()
@@ -122,6 +125,8 @@ const AppNav = () => {
         text={t('common.menus.apps')}
         activeSegment={['apps', 'app']}
         link='/apps'
+        isVertical={isVertical}
+        expand={expand}
         curNav={appDetail}
         navs={navItems}
         createText={t('common.menus.newApp')}

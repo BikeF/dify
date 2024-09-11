@@ -6,17 +6,19 @@ import { usePathname, useRouter } from 'next/navigation'
 import {
   RiDashboard2Fill,
   RiDashboard2Line,
-  RiFileList3Fill,
-  RiFileList3Line,
-  RiTerminalBoxFill,
-  RiTerminalBoxLine,
-  RiTerminalWindowFill,
-  RiTerminalWindowLine,
 } from '@remixicon/react'
 import { useTranslation } from 'react-i18next'
 import { useShallow } from 'zustand/react/shallow'
 import { useContextSelector } from 'use-context-selector'
 import s from './style.module.css'
+import {
+  RiFileList3Fill,
+  RiFileList3Line,
+  ApiIconActive as RiTerminalBoxFill,
+  ApiIcon as RiTerminalBoxLine,
+  RiTerminalWindowFill,
+  RiTerminalWindowLine,
+} from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 import { useStore } from '@/app/components/app/store'
 import AppSideBar from '@/app/components/app-sidebar'
@@ -95,7 +97,7 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
 
   useEffect(() => {
     if (appDetail) {
-      document.title = `${(appDetail.name || 'App')} - Dify`
+      document.title = `${appDetail.name || 'App'} - Agent Studio`
       const localeMode = localStorage.getItem('app-detail-collapse-or-expand') || 'expand'
       const mode = isMobile ? 'collapse' : 'expand'
       setAppSiderbarExpand(isMobile ? mode : localeMode)
@@ -142,15 +144,18 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
     )
   }
 
+  const isVertical = false
   return (
-    <div className={cn(s.app, 'flex', 'overflow-hidden')}>
-      {appDetail && (
-        <AppSideBar title={appDetail.name} icon={appDetail.icon} icon_background={appDetail.icon_background} desc={appDetail.mode} navigation={navigation} />
-      )}
-      <div className="bg-white grow overflow-hidden">
-        {children}
+    <>
+      <div className={cn(s.app, isVertical ? '' : 'flex-col', 'flex overflow-hidden')}>
+        {appDetail && (
+          <AppSideBar title={appDetail.name} isVertical={isVertical} icon={appDetail.icon} icon_background={appDetail.icon_background} desc={appDetail.mode} navigation={navigation} />
+        )}
+        <div className={cn('bg-white grow overflow-hidden h-full', isVertical ? '' : 'p-[5px]')}>
+          {children}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 export default React.memo(AppDetailLayout)

@@ -3,17 +3,18 @@
 import { useTranslation } from 'react-i18next'
 import Link from 'next/link'
 import { useSelectedLayoutSegment } from 'next/navigation'
-import {
-  RiPlanetFill,
-  RiPlanetLine,
-} from '@remixicon/react'
+
 import classNames from '@/utils/classnames'
 type ExploreNavProps = {
   className?: string
+  isVertical?: boolean
+  expand?: boolean
 }
 
 const ExploreNav = ({
   className,
+  isVertical = false,
+  expand = true,
 }: ExploreNavProps) => {
   const { t } = useTranslation()
   const selectedSegment = useSelectedLayoutSegment()
@@ -22,15 +23,17 @@ const ExploreNav = ({
   return (
     <Link href="/explore/apps" className={classNames(
       className, 'group',
-      activated && 'bg-components-main-nav-nav-button-bg-active shadow-md',
-      activated ? 'text-components-main-nav-nav-button-text-active' : 'text-components-main-nav-nav-button-text hover:bg-components-main-nav-nav-button-bg-hover',
+      activated && 'bg-white shadow-md',
+      activated ? 'text-primary-600' : 'text-gray-500 hover:bg-gray-200',
+      isVertical ? 'w-full' : '',
+      expand ? '' : '!mr-0 px-0',
     )}>
-      {
-        activated
-          ? <RiPlanetFill className='mr-2 w-4 h-4' />
-          : <RiPlanetLine className='mr-2 w-4 h-4' />
-      }
-      {t('common.menus.explore')}
+      {/* {
+        actived
+          ? <RiPlanetFill className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
+          : <RiPlanetLine className={classNames('w-4 h-4', expand ? 'mr-2' : 'ml-1')} />
+      } */}
+      {expand && t('common.menus.explore')}
     </Link>
   )
 }

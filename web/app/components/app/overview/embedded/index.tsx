@@ -33,7 +33,7 @@ const OPTION_MAP = {
   scripts: {
     getContent: (url: string, token: string, primaryColor: string, isTestEnv?: boolean) =>
       `<script>
- window.difyChatbotConfig = {
+ window.kofeChatbotConfig = {
   token: '${token}'${isTestEnv
   ? `,
   isDev: true`
@@ -49,7 +49,7 @@ const OPTION_MAP = {
  defer>
 </script>
 <style>
-  #dify-chatbot-bubble-button {
+  #kofe-chatbot-bubble-button {
     background-color: ${primaryColor} !important;
   }
 </style>`,
@@ -120,6 +120,9 @@ const Embedded = ({ siteInfo, isShow, onClose, appBaseUrl, accessToken, classNam
       </div>
       <div className="flex flex-wrap items-center justify-between gap-y-2">
         {Object.keys(OPTION_MAP).map((v, index) => {
+          if (v === 'chromePlugin')
+            return <></>
+
           return (
             <div
               key={index}

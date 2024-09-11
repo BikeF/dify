@@ -184,6 +184,13 @@ Workflow applications offers non-session support and is ideal for translation, a
     ```
 
     </CodeGroup>
+    
+    ### Python Request
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef run_workflow(api_key):\n    url = f'{props.appDetail.api_base_url}/workflows/run'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "inputs": {},\n        "response_mode": "streaming",\n        "user": "abc-123"\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = '{api_key}'  # Replace with your actual API key\n\n    result = run_workflow(api_key)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])\n`}>
+      ```python
+      ```
+    </CodeGroup>
+
     ### Blocking Mode
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
@@ -311,6 +318,12 @@ Workflow applications offers non-session support and is ideal for translation, a
     ```
     </CodeGroup>
 
+    ### Python Request
+    <CodeGroup title="Python Request" targetCode={`import requests\nimport json\n\ndef stop_task(task_id, api_key, user):\n    url = f'{props.appDetail.api_base_url}/workflows/tasks/{task_id}/stop'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}',\n        'Content-Type': 'application/json'\n    }\n    \n    payload = {\n        "user": user\n    }\n    \n    response = requests.post(url, json=payload, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    task_id = "your_task_id_here"\n    api_key = "{api_key}"\n    user = "abc-123"\n    \n    result = stop_task(task_id, api_key, user)\n    \n    if result:\n        print("Success:", result)\n    else:\n        print("Request failed with error:", result[1])`}>
+      ```python
+      ```
+    </CodeGroup>
+
     ### Response Example
     <CodeGroup title="Response">
     ```json {{ title: 'Response' }}
@@ -379,6 +392,11 @@ Workflow applications offers non-session support and is ideal for translation, a
     --header 'Authorization: Bearer {api_key}'
     ```
 
+    </CodeGroup>
+
+    <CodeGroup title="Python Request" targetCode={`import requests\n\ndef get_parameters(api_key, user):\n    url = f'{props.appDetail.api_base_url}/parameters?user={user}'\n    \n    headers = {\n        'Authorization': f'Bearer {api_key}'\n    }\n    \n    response = requests.get(url, headers=headers)\n    \n    if response.status_code == 200:\n        return response.json()\n    else:\n        return None, response.text\n\nif __name__ == "__main__":\n    api_key = "{api_key}"  # Replace with your actual API key\n    user = "abc-123"\n    \n    parameters = get_parameters(api_key, user)\n    \n    if parameters:\n        print("Success:", parameters)\n    else:\n        print("Request failed with error:", parameters[1])\n`}>
+      ```python
+      ```
     </CodeGroup>
 
     <CodeGroup title="Response">

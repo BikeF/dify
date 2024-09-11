@@ -16,12 +16,12 @@ const translation = {
     },
   },
   apps: {
-    title: '探索 Dify 的應用',
+    title: '探索 Agent Studio 的應用',
     description: '使用這些模板應用程式，或根據模板自定義您自己的應用程式。',
     allCategories: '推薦',
   },
   appCard: {
-    addToWorkspace: '新增到工作區',
+    addToWorkspace: '使用模板',
     customize: '自定義',
   },
   appCustomize: {

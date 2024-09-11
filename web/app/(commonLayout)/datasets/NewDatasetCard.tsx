@@ -2,9 +2,7 @@
 
 import { forwardRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  RiAddLine,
-} from '@remixicon/react'
+import { RiAddLine } from '@/app/components/base/icons/svgr'
 
 const CreateAppCard = forwardRef<HTMLAnchorElement>((_, ref) => {
   const { t } = useTranslation()

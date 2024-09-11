@@ -4,12 +4,6 @@ import {
 } from 'react'
 import { useTranslation } from 'react-i18next'
 import {
-  RiCursorLine,
-  RiFunctionAddLine,
-  RiHand,
-  RiStickyNoteAddLine,
-} from '@remixicon/react'
-import {
   useNodesReadOnly,
   useWorkflowMoveMode,
   useWorkflowOrganize,
@@ -21,6 +15,7 @@ import { useStore } from '../store'
 import AddBlock from './add-block'
 import TipPopup from './tip-popup'
 import { useOperator } from './hooks'
+import { RiCursorLine, RiFunctionAddLine, RiHand, RiStickyNoteAddLine } from '@/app/components/base/icons/svgr'
 import cn from '@/utils/classnames'
 
 const Control = () => {

@@ -1,5 +1,5 @@
 .option {
-  width: 188px;
+  width: 288px;
   height: 128px;
   @apply box-border cursor-pointer bg-auto bg-no-repeat bg-center rounded-md;
 }

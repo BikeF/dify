@@ -51,21 +51,21 @@ const getIcon = (type: BlockEnum, className: string) => {
   }[type]
 }
 const ICON_CONTAINER_BG_COLOR_MAP: Record<string, string> = {
-  [BlockEnum.Start]: 'bg-primary-500',
-  [BlockEnum.LLM]: 'bg-[#6172F3]',
-  [BlockEnum.Code]: 'bg-[#2E90FA]',
-  [BlockEnum.End]: 'bg-[#F79009]',
-  [BlockEnum.IfElse]: 'bg-[#06AED4]',
-  [BlockEnum.Iteration]: 'bg-[#06AED4]',
-  [BlockEnum.HttpRequest]: 'bg-[#875BF7]',
-  [BlockEnum.Answer]: 'bg-[#F79009]',
-  [BlockEnum.KnowledgeRetrieval]: 'bg-[#16B364]',
-  [BlockEnum.QuestionClassifier]: 'bg-[#16B364]',
-  [BlockEnum.TemplateTransform]: 'bg-[#2E90FA]',
-  [BlockEnum.VariableAssigner]: 'bg-[#2E90FA]',
-  [BlockEnum.VariableAggregator]: 'bg-[#2E90FA]',
+  [BlockEnum.Start]: "text-primary-500 ",
+  [BlockEnum.LLM]: "text-[#F79009] bg-[#FEF4E6]",
+  [BlockEnum.Code]: "text-[#F79009] bg-[#FEF4E6]",
+  [BlockEnum.End]: "text-[#6172F3] bg-[#EEEFFB]",
+  [BlockEnum.IfElse]: "text-[#06AED4] bg-[#EEF3FD]",
+  [BlockEnum.Iteration]: "text-[#06AED4] bg-[#EEF3FD]",
+  [BlockEnum.HttpRequest]: "text-[#875BF7] bg-[#EEEFFB]",
+  [BlockEnum.Answer]: "text-[#F79009] bg-[#FEF4E6]",
+  [BlockEnum.KnowledgeRetrieval]: "text-[#16B364] bg-[#E7F7EF]",
+  [BlockEnum.QuestionClassifier]: "text-[#16B364] bg-[#E7F7EF]",
+  [BlockEnum.TemplateTransform]: "text-[#F79009] bg-[#FEF4E6]",
+  [BlockEnum.VariableAssigner]: "text-[#F79009] bg-[#FEF4E6]",
+  [BlockEnum.VariableAggregator]: "text-[#F79009] bg-[#FEF4E6]",
   [BlockEnum.Assigner]: 'bg-[#2E90FA]',
-  [BlockEnum.ParameterExtractor]: 'bg-[#2E90FA]',
+  [BlockEnum.ParameterExtractor]: "text-[#F79009] bg-[#FEF4E6]",
 }
 const BlockIcon: FC<BlockIconProps> = ({
   type,
@@ -74,44 +74,38 @@ const BlockIcon: FC<BlockIconProps> = ({
   toolIcon,
 }) => {
   return (
-    <div className={`
-      flex items-center justify-center border-[0.5px] border-white/2 text-white
+    <div
+      className={`
+      flex items-center justify-center border-[0.5px] border-white/2
       ${ICON_CONTAINER_CLASSNAME_SIZE_MAP[size]}
       ${ICON_CONTAINER_BG_COLOR_MAP[type]}
-      ${toolIcon && '!shadow-none'}
+      ${toolIcon && "!shadow-none"}
       ${className}
     `}
     >
-      {
-        type !== BlockEnum.Tool && (
-          getIcon(type, size === 'xs' ? 'w-3 h-3' : 'w-3.5 h-3.5')
-        )
-      }
-      {
-        type === BlockEnum.Tool && toolIcon && (
-          <>
-            {
-              typeof toolIcon === 'string'
-                ? (
-                  <div
-                    className='shrink-0 w-full h-full bg-cover bg-center rounded-md'
-                    style={{
-                      backgroundImage: `url(${toolIcon})`,
-                    }}
-                  ></div>
-                )
-                : (
-                  <AppIcon
-                    className='shrink-0 !w-full !h-full'
-                    size='tiny'
-                    icon={toolIcon?.content}
-                    background={toolIcon?.background}
-                  />
-                )
-            }
-          </>
-        )
-      }
+      {type !== BlockEnum.Tool
+        && getIcon(type, size === "xs" ? "w-3 h-3" : "w-3.5 h-3.5")}
+      {type === BlockEnum.Tool && toolIcon && (
+        <>
+          {typeof toolIcon === "string"
+            ? (
+              <div
+                className="shrink-0 w-full h-full bg-cover bg-center rounded-md"
+                style={{
+                  backgroundImage: `url(${toolIcon})`,
+                }}
+              ></div>
+            )
+            : (
+              <AppIcon
+                className="shrink-0 !w-full !h-full"
+                size="tiny"
+                icon={toolIcon?.content}
+                background={toolIcon?.background}
+              />
+            )}
+        </>
+      )}
     </div>
   )
 }

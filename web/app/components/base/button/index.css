@@ -21,6 +21,10 @@
     @apply px-4 h-9 rounded-[10px] text-sm font-semibold;
   }
 
+  .btn-big {
+    @apply px-5 h-10 rounded-[20px] text-base font-semibold;
+  }
+
   .btn-primary {
     @apply 
     shadow
@@ -107,6 +111,10 @@
     bg-components-button-secondary-bg-disabled 
     border-components-button-secondary-border-disabled 
     text-components-button-secondary-accent-text-disabled;
+  }
+
+  .btn-primary-linear {
+    @apply bg-primarylinear hover:bg-primary-100 text-white hover:bg-primarylinearhover;
   }
 
   .btn-warning {
