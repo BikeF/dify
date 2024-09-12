@@ -50,7 +50,7 @@ export const VariableMenuItem = memo(({
       </div>
       <div className='grow text-[13px] text-gray-900 truncate' title={title}>
         {before}
-        <span className='text-[#2970FF]'>{middle}</span>
+        <span className='text-[#029156]'>{middle}</span>
         {after}
       </div>
       {extraElement}

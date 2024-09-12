@@ -133,7 +133,7 @@ export const useVariableOptions = (
           return (
             <VariableMenuItem
               title={item.value}
-              icon={<BracketsX className='w-[14px] h-[14px] text-[#2970FF]' />}
+              icon={<BracketsX className='w-[14px] h-[14px] text-[#029156]' />}
               queryString={queryString}
               isSelected={isSelected}
               onClick={onSelect}
@@ -162,7 +162,7 @@ export const useVariableOptions = (
         return (
           <VariableMenuItem
             title={t('common.promptEditor.variable.modal.add')}
-            icon={<BracketsX className='mr-2 w-[14px] h-[14px] text-[#2970FF]' />}
+            icon={<BracketsX className='mr-2 w-[14px] h-[14px] text-[#029156]' />}
             queryString={queryString}
             isSelected={isSelected}
             onClick={onSelect}

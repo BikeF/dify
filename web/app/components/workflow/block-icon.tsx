@@ -64,7 +64,7 @@ const ICON_CONTAINER_BG_COLOR_MAP: Record<string, string> = {
   [BlockEnum.TemplateTransform]: "text-[#F79009] bg-[#FEF4E6]",
   [BlockEnum.VariableAssigner]: "text-[#F79009] bg-[#FEF4E6]",
   [BlockEnum.VariableAggregator]: "text-[#F79009] bg-[#FEF4E6]",
-  [BlockEnum.Assigner]: 'bg-[#2E90FA]',
+  [BlockEnum.Assigner]: 'text-[#F79009] bg-[#FEF4E6]',
   [BlockEnum.ParameterExtractor]: "text-[#F79009] bg-[#FEF4E6]",
 }
 const BlockIcon: FC<BlockIconProps> = ({

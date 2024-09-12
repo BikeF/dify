@@ -31,7 +31,7 @@ const CustomConnectionLine = ({ fromX, fromY, toX, toY }: ConnectionLineComponen
         y={toY - 4}
         width={2}
         height={8}
-        fill='#2970FF'
+        fill='#029156'
       />
     </g>
   )

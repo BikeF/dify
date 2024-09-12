@@ -19,7 +19,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background-color: #296DFF;
+  background-color: #029156;
   color: white;
   border: none;
   cursor: pointer;
@@ -76,7 +76,7 @@
 
 .timeDisplay {
   /* position: absolute; */
-  color: #296DFF;
+  color: #029156;
   border-radius: 2px;
   order: 0;
   height: 100%;

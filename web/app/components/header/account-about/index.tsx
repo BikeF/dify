@@ -35,7 +35,7 @@ export default function AccountAbout({
           <LogoSite className="mx-auto mb-2" />
           {/* <div className='mb-3 text-center text-xs font-normal text-gray-500'>Version {langeniusVersionInfo?.current_version}</div> */}
           <div className="mb-3 text-center text-xs font-normal text-gray-500">
-            Version 1.1.0
+            Version 1.2.0
           </div>
           <div className="mb-4 text-center text-xs font-normal text-gray-700">
             <div>© {dayjs().year()} LightARK, Inc., Contributors.</div>
@@ -45,8 +45,8 @@ export default function AccountAbout({
         <div className="flex justify-between items-center">
           <div className="text-xs font-medium text-gray-800">
             {isLatest
-              ? t('common.about.latestAvailable', { version: '1.1.0' })
-              : t('common.about.nowAvailable', { version: '1.1.0' })}
+              ? t('common.about.latestAvailable', { version: '1.2.0' })
+              : t('common.about.nowAvailable', { version: '1.2.0' })}
           </div>
           <div className="flex items-center">
           </div>

@@ -230,7 +230,7 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ src }) => {
       let color
 
       if (index * barWidth <= playedWidth)
-        color = '#296DFF'
+        color = '#029156'
       else if ((index * barWidth / width) * duration <= hoverTime)
         color = 'rgba(21,90,239,.40)'
       else
