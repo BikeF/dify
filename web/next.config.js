@@ -50,6 +50,15 @@ const nextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        // 匹配 /api 结尾的请求
+        source: '/files/:path*',
+        destination: `${process.env.NEXT_PUBLIC_SERVIER_URL}/files/:path*`, // 代理到目标地址
+      },
+    ]
+  },
   output: 'standalone',
 }
 
