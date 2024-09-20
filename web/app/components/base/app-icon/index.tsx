@@ -40,7 +40,8 @@ const AppIcon: FC<AppIconProps> = ({
     'overflow-hidden',
   )
 
-  const isValidImageIcon = iconType === 'image' && (imageUrl || '/images/bot-avatar.jpg')
+  imageUrl = imageUrl || '/images/bot-avatar.jpg'
+  const isValidImageIcon = iconType === 'image' && imageUrl
 
   return <span
     className={wrapperClassName}
