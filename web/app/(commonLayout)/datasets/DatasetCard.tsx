@@ -5,13 +5,13 @@ import { useRouter } from 'next/navigation'
 import { useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { RiMoreFill } from '@remixicon/react'
+import Image from 'next/image'
 import cn from '@/utils/classnames'
 import Confirm from '@/app/components/base/confirm'
 import { ToastContext } from '@/app/components/base/toast'
 import { checkIsUsedInApp, deleteDataset } from '@/service/datasets'
 import type { DataSet } from '@/models/datasets'
 import Tooltip from '@/app/components/base/tooltip'
-import { Folder } from '@/app/components/base/icons/src/vender/solid/files'
 import type { HtmlContentProps } from '@/app/components/base/popover'
 import CustomPopover from '@/app/components/base/popover'
 import Divider from '@/app/components/base/divider'
@@ -120,7 +120,8 @@ const DatasetCard = ({
             'shrink-0 flex items-center justify-center p-2.5 bg-[#F5F8FF] rounded-md border-[0.5px] border-[#E0EAFF]',
             !dataset.embedding_available && 'opacity-50 hover:opacity-100',
           )}>
-            <Folder className='w-5 h-5 text-[#444CE7]' />
+            <Image alt='serpapi logo' src='/images/know.png' width={20} height={20} />
+            {/* <Folder className='w-5 h-5 text-[#444CE7]' /> */}
           </div>
           <div className='grow w-0 py-[1px]'>
             <div className='flex items-center text-sm leading-5 font-semibold text-gray-800'>
