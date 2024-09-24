@@ -24,6 +24,7 @@ import Answer from './answer'
 import ChatInput from './chat-input'
 import TryToAsk from './try-to-ask'
 import { ChatContextProvider } from './context'
+import { Resolution } from '@/types/app'
 import classNames from '@/utils/classnames'
 import type { Emoji } from '@/app/components/tools/types'
 import Button from '@/app/components/base/button'
@@ -266,7 +267,13 @@ const Chat: FC<ChatProps> = ({
             {
               !noChatInput && (
                 <ChatInput
-                  visionConfig={config?.file_upload?.image}
+                  visionConfig={config?.file_upload?.image || {
+                    enabled: false,
+                    number_limits: 10,
+                    detail: Resolution.high,
+                    transfer_methods: [],
+                    image_file_size_limit: 10,
+                  }}
                   speechToTextConfig={config?.speech_to_text}
                   onSend={onSend}
                   theme={themeBuilder?.theme}

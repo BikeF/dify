@@ -35,7 +35,7 @@ import {
 import cn from '@/utils/classnames'
 
 type ChatInputProps = {
-  visionConfig?: VisionConfig
+  visionConfig: VisionConfig
   speechToTextConfig?: EnableType
   onSend?: OnSend
   theme?: Theme | null
@@ -81,12 +81,15 @@ const ChatInput: FC<ChatInputProps> = ({
         notify({ type: 'info', message: t('appAnnotation.errorMessage.queryRequired') })
         return
       }
-      onSend(query, files.filter(file => file.progress !== -1).map(fileItem => ({
-        type: 'image',
-        transfer_method: fileItem.type,
-        url: fileItem.url,
-        upload_file_id: fileItem.fileId,
-      })))
+
+      onSend(query, files.filter(file => file.progress !== -1).map((fileItem) => {
+        return {
+          type: fileItem.fileType,
+          transfer_method: fileItem.type,
+          url: fileItem.url,
+          upload_file_id: fileItem.fileId,
+        }
+      }))
       setQuery('')
       onClear()
     }
@@ -153,31 +156,29 @@ const ChatInput: FC<ChatInputProps> = ({
         <div
           className={`
             p-[5.5px] max-h-[150px] bg-white border-[1.5px] border-gray-200 rounded-xl overflow-y-auto
-            ${isDragActive && 'border-primary-600'} mb-2
+            ${isDragActive && 'border-primary-600'} mb-2 ml-2
           `}
         >
           {
-            visionConfig?.enabled && (
-              <>
-                <div className='absolute bottom-2 left-2 flex items-center'>
-                  <ChatImageUploader
-                    settings={visionConfig}
-                    onUpload={onUpload}
-                    disabled={files.length >= visionConfig.number_limits}
-                  />
-                  <div className='mx-1 w-[1px] h-4 bg-black/5' />
-                </div>
-                <div className='pl-[52px]'>
-                  <ImageList
-                    list={files}
-                    onRemove={onRemove}
-                    onReUpload={onReUpload}
-                    onImageLinkLoadSuccess={onImageLinkLoadSuccess}
-                    onImageLinkLoadError={onImageLinkLoadError}
-                  />
-                </div>
-              </>
-            )
+            <>
+              <div className='absolute bottom-2 left-2 flex items-center'>
+                <ChatImageUploader
+                  settings={visionConfig}
+                  onUpload={onUpload}
+                  disabled={files.length >= visionConfig.number_limits}
+                />
+                <div className='mx-1 w-[1px] h-4 bg-black/5' />
+              </div>
+              <div className='pl-[52px]'>
+                <ImageList
+                  list={files}
+                  onRemove={onRemove}
+                  onReUpload={onReUpload}
+                  onImageLinkLoadSuccess={onImageLinkLoadSuccess}
+                  onImageLinkLoadError={onImageLinkLoadError}
+                />
+              </div>
+            </>
           }
           <Textarea
             ref={textAreaRef}

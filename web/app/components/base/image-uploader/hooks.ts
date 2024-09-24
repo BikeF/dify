@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import { imageUpload } from './utils'
 import { useToastContext } from '@/app/components/base/toast'
-import { ALLOW_FILE_EXTENSIONS, TransferMethod } from '@/types/app'
+import { ALLOW_FILE_EXTENSIONS, ALLOW_FILE_EXTENSIONS2, EXCEL_FILE_EXTENSIONS, FileType, PDF_FILE_EXTENSIONS, TransferMethod } from '@/types/app'
 import type { ImageFile, VisionSettings } from '@/types/app'
 
 export const useImageFiles = () => {
@@ -115,26 +115,34 @@ type useLocalUploaderProps = {
   disabled?: boolean
   limit?: number
   onUpload: (imageFile: ImageFile) => void
+  enableFile?: boolean
 }
 
-export const useLocalFileUploader = ({ limit, disabled = false, onUpload }: useLocalUploaderProps) => {
+export const useLocalFileUploader = ({ limit, disabled = false, onUpload, enableFile }: useLocalUploaderProps) => {
   const { notify } = useToastContext()
   const params = useParams()
   const { t } = useTranslation()
-
   const handleLocalFileUpload = useCallback((file: File) => {
     if (disabled) {
       // TODO: leave some warnings?
       return
     }
-
-    if (!ALLOW_FILE_EXTENSIONS.includes(file.type.split('/')[1]))
+    const FILE_EXTENSIONS = enableFile ? [...ALLOW_FILE_EXTENSIONS, ...ALLOW_FILE_EXTENSIONS2] : [...ALLOW_FILE_EXTENSIONS]
+    if (!FILE_EXTENSIONS.includes(file.name.split('.').pop() as string))
       return
 
     if (limit && file.size > limit * 1024 * 1024) {
       notify({ type: 'error', message: t('common.imageUploader.uploadFromComputerLimit', { size: limit }) })
       return
     }
+
+    let fileType = FileType.unknown
+    if (ALLOW_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
+      fileType = FileType.image
+    else if (PDF_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
+      fileType = FileType.pdf
+    else if (EXCEL_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
+      fileType = FileType.excel
 
     const reader = new FileReader()
     reader.addEventListener(
@@ -145,6 +153,7 @@ export const useLocalFileUploader = ({ limit, disabled = false, onUpload }: useL
           _id: `${Date.now()}`,
           fileId: '',
           file,
+          fileType,
           url: reader.result as string,
           base64Url: reader.result as string,
           progress: 0,
@@ -189,12 +198,11 @@ export const useClipboardUploader = ({ visionConfig, onUpload, files }: useClipb
   const allowLocalUpload = visionConfig?.transfer_methods?.includes(TransferMethod.local_file)
   const disabled = useMemo(() =>
     !visionConfig
-    || !visionConfig?.enabled
     || !allowLocalUpload
     || files.length >= visionConfig.number_limits!,
   [allowLocalUpload, files.length, visionConfig])
   const limit = useMemo(() => visionConfig ? +visionConfig.image_file_size_limit! : 0, [visionConfig])
-  const { handleLocalFileUpload } = useLocalFileUploader({ limit, onUpload, disabled })
+  const { handleLocalFileUpload } = useLocalFileUploader({ limit, onUpload, disabled, enableFile: true })
 
   const handleClipboardPaste = useCallback((e: ClipboardEvent<HTMLTextAreaElement>) => {
     // reserve native text copy behavior
@@ -221,12 +229,11 @@ export const useDraggableUploader = <T extends HTMLElement>({ visionConfig, onUp
   const allowLocalUpload = visionConfig?.transfer_methods?.includes(TransferMethod.local_file)
   const disabled = useMemo(() =>
     !visionConfig
-    || !visionConfig?.enabled
     || !allowLocalUpload
     || files.length >= visionConfig.number_limits!,
   [allowLocalUpload, files.length, visionConfig])
   const limit = useMemo(() => visionConfig ? +visionConfig.image_file_size_limit! : 0, [visionConfig])
-  const { handleLocalFileUpload } = useLocalFileUploader({ disabled, onUpload, limit })
+  const { handleLocalFileUpload } = useLocalFileUploader({ disabled, onUpload, limit, enableFile: true })
   const [isDragActive, setIsDragActive] = useState(false)
 
   const handleDragEnter = useCallback((e: React.DragEvent<T>) => {

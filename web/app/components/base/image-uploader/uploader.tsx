@@ -2,7 +2,7 @@ import type { ChangeEvent, FC } from 'react'
 import { useState } from 'react'
 import { useLocalFileUploader } from './hooks'
 import type { ImageFile } from '@/types/app'
-import { ALLOW_FILE_EXTENSIONS } from '@/types/app'
+import { ALLOW_FILE_EXTENSIONS, ALLOW_FILE_EXTENSIONS2 } from '@/types/app'
 
 type UploaderProps = {
   children: (hovering: boolean) => JSX.Element
@@ -10,6 +10,7 @@ type UploaderProps = {
   closePopover?: () => void
   limit?: number
   disabled?: boolean
+  enableImg: boolean
 }
 
 const Uploader: FC<UploaderProps> = ({
@@ -18,12 +19,14 @@ const Uploader: FC<UploaderProps> = ({
   closePopover,
   limit,
   disabled,
+  enableImg,
 }) => {
   const [hovering, setHovering] = useState(false)
   const { handleLocalFileUpload } = useLocalFileUploader({
     limit,
     onUpload,
     disabled,
+    enableFile: true,
   })
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +50,7 @@ const Uploader: FC<UploaderProps> = ({
         className='absolute block inset-0 opacity-0 text-[0] w-full disabled:cursor-not-allowed cursor-pointer'
         onClick={e => ((e.target as HTMLInputElement).value = '')}
         type='file'
-        accept={ALLOW_FILE_EXTENSIONS.map(ext => `.${ext}`).join(',')}
+        accept={enableImg ? [...ALLOW_FILE_EXTENSIONS, ...ALLOW_FILE_EXTENSIONS2].map(ext => `.${ext}`).join(',') : ALLOW_FILE_EXTENSIONS2.map(ext => `.${ext}`).join(',')}
         onChange={handleChange}
         disabled={disabled}
       />

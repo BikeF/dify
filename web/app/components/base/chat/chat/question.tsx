@@ -12,6 +12,8 @@ import { QuestionTriangle } from '@/app/components/base/icons/src/vender/solid/g
 import { User } from '@/app/components/base/icons/src/public/avatar'
 import { Markdown } from '@/app/components/base/markdown'
 import ImageGallery from '@/app/components/base/image-gallery'
+import { FileType } from '@/types/app'
+import { ExcelIcon, FileIcon, PdfIcon } from '@/app/components/base/icons/svgr'
 
 type QuestionProps = {
   item: ChatItem
@@ -28,7 +30,7 @@ const Question: FC<QuestionProps> = ({
     message_files,
   } = item
 
-  const imgSrcs = message_files?.length ? message_files.map(item => item.url) : []
+  // const imgSrcs = message_files?.length ? message_files.map(item => item.url) : []
   return (
     <div className='flex justify-end mb-2 last:mb-0 pl-10'>
       <div className='group relative mr-4'>
@@ -41,9 +43,18 @@ const Question: FC<QuestionProps> = ({
           style={theme?.chatBubbleColorStyle ? CssTransform(theme.chatBubbleColorStyle) : {}}
         >
           {
-            !!imgSrcs.length && (
-              <ImageGallery srcs={imgSrcs} />
-            )
+            (message_files || []).map((item) => {
+              if (item.type === FileType.image)
+                return <ImageGallery srcs={[item.url]} />
+              else if (item.type === FileType.excel)
+                return <div className='w-8 h-8 text-[#800080]'><ExcelIcon className="w-full h-full"></ExcelIcon></div>
+              else if (item.type === FileType.pdf)
+                return <div className='w-8 h-8 text-[#FFA500]'><PdfIcon className="w-full h-full"></PdfIcon></div>
+              else if (item.type === FileType.unknown)
+                return <div className='w-8 h-8 text-[#32CD32]'><FileIcon className="w-full h-full"></FileIcon></div>
+
+              return <></>
+            })
           }
           <Markdown content={content} />
         </div>

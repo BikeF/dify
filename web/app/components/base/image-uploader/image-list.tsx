@@ -10,8 +10,9 @@ import { RefreshCcw01 } from '@/app/components/base/icons/src/vender/line/arrows
 import { AlertTriangle } from '@/app/components/base/icons/src/vender/solid/alertsAndFeedback'
 import Tooltip from '@/app/components/base/tooltip'
 import type { ImageFile } from '@/types/app'
-import { TransferMethod } from '@/types/app'
+import { FileType, TransferMethod } from '@/types/app'
 import ImagePreview from '@/app/components/base/image-uploader/image-preview'
+import { ExcelIcon, FileIcon, PdfIcon } from '@/app/components/base/icons/svgr'
 
 type ImageListProps = {
   list: ImageFile[]
@@ -95,25 +96,34 @@ const ImageList: FC<ImageListProps> = ({
               )}
             </div>
           )}
-          <img
-            className="w-16 h-16 rounded-lg object-cover cursor-pointer border-[0.5px] border-black/5"
-            alt={item.file?.name}
-            onLoad={() => handleImageLinkLoadSuccess(item)}
-            onError={() => handleImageLinkLoadError(item)}
-            src={
-              item.type === TransferMethod.remote_url
-                ? item.url
-                : item.base64Url
-            }
-            onClick={() =>
-              item.progress === 100
-              && setImagePreviewUrl(
-                (item.type === TransferMethod.remote_url
+          <div className='relative w-16 h-16 rounded-lg border-[0.5px] border-black/5 overflow-hidden'>
+            {/* 上传图片 */}
+            {item.fileType === FileType.image && <img
+              className="w-full h-full object-cover cursor-pointer "
+              alt={item.file?.name}
+              onLoad={() => handleImageLinkLoadSuccess(item)}
+              onError={() => handleImageLinkLoadError(item)}
+              src={
+                item.type === TransferMethod.remote_url
                   ? item.url
-                  : item.base64Url) as string,
-              )
-            }
-          />
+                  : item.base64Url
+              }
+              onClick={() =>
+                item.progress === 100
+                && setImagePreviewUrl(
+                  (item.type === TransferMethod.remote_url
+                    ? item.url
+                    : item.base64Url) as string,
+                )
+              }
+            />}
+
+            {/* 上传文件 */}
+            {item.fileType === FileType.excel && <div className='absolute w-8 h-8 left-4 top-4'><ExcelIcon className="w-full h-full text-red"></ExcelIcon></div>}
+            {item.fileType === FileType.pdf && <div className='absolute w-8 h-8 left-4 top-4'><PdfIcon className="w-full h-full text-red"></PdfIcon></div>}
+            {item.fileType === FileType.unknown && <div className='absolute w-8 h-8 left-4 top-4'><FileIcon className="w-full h-full text-red"></FileIcon></div>}
+
+          </div>
           {!readonly && (
             <button
               type="button"
@@ -132,6 +142,7 @@ const ImageList: FC<ImageListProps> = ({
       {imagePreviewUrl && (
         <ImagePreview
           url={imagePreviewUrl}
+          title=''
           onCancel={() => setImagePreviewUrl('')}
         />
       )}

@@ -21,6 +21,11 @@ import Cog8ToothIcon from './vender/cog8Tooth.svg?url'
 import RiAddLine from './vender/add.svg?url'
 import ApiIcon from './vender/api.svg?url'
 import ApiIconActive from './vender/api-active.svg?url'
+import CodeIcon from './vender/code.svg?url'
+import ExcelIcon from './vender/excel.svg?url'
+import PdfIcon from './vender/pdf.svg?url'
+import FileIcon from './vender/file.svg?url'
+import FileLinkIcon from './vender/filelink.svg?url'
 
 export {
   RiFileList3Line,
@@ -46,4 +51,9 @@ export {
   RiAddLine,
   ApiIcon,
   ApiIconActive,
+  CodeIcon,
+  ExcelIcon,
+  PdfIcon,
+  FileIcon,
+  FileLinkIcon,
 }
