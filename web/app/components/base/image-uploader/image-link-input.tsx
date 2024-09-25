@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import type { ImageFile } from '@/types/app'
-import { TransferMethod } from '@/types/app'
+import { ALLOW_FILE_EXTENSIONS, EXCEL_FILE_EXTENSIONS, FileType, PDF_FILE_EXTENSIONS, TransferMethod } from '@/types/app'
 
 type ImageLinkInputProps = {
   onUpload: (imageFile: ImageFile) => void
@@ -21,10 +21,25 @@ const ImageLinkInput: FC<ImageLinkInputProps> = ({
     if (disabled)
       return
 
+    function getFileType(url: string) {
+      const extension = url.split('.').pop()?.toLowerCase()
+      if (extension) {
+        if (PDF_FILE_EXTENSIONS.includes(extension))
+          return FileType.pdf
+        else if (EXCEL_FILE_EXTENSIONS.includes(extension))
+          return FileType.excel
+        else if (ALLOW_FILE_EXTENSIONS.includes(extension))
+          return FileType.image
+      }
+
+      return FileType.unknown
+    }
+
     const imageFile = {
       type: TransferMethod.remote_url,
       _id: `${Date.now()}`,
       fileId: '',
+      fileType: getFileType(imageLink),
       progress: regex.test(imageLink) ? 0 : -1,
       url: imageLink,
     }

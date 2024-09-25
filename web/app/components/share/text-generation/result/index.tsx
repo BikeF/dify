@@ -159,7 +159,7 @@ const Result: FC<IResultProps> = ({
     const data: Record<string, any> = {
       inputs,
     }
-    if (visionConfig.enabled && completionFiles && completionFiles?.length > 0) {
+    if (completionFiles && completionFiles?.length > 0) {
       data.files = completionFiles.map((item) => {
         if (item.transfer_method === TransferMethod.local_file) {
           return {

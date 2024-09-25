@@ -154,7 +154,7 @@ export const useLocalFileUploader = ({ limit, disabled = false, onUpload, enable
           fileId: '',
           file,
           fileType,
-          url: reader.result as string,
+          url: fileType === FileType.image ? reader.result as string : file.name,
           base64Url: reader.result as string,
           progress: 0,
         }

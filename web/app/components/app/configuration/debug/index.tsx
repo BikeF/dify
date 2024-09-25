@@ -267,7 +267,7 @@ const Debug: FC<IDebug> = ({
       model_config: postModelConfig,
     }
 
-    if (visionConfig.enabled && completionFiles && completionFiles?.length > 0) {
+    if (completionFiles && completionFiles?.length > 0) {
       data.files = completionFiles.map((item) => {
         if (item.transfer_method === TransferMethod.local_file) {
           return {

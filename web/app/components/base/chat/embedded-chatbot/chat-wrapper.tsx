@@ -72,7 +72,8 @@ const ChatWrapper = () => {
       conversation_id: currentConversationId,
     }
 
-    if (appConfig?.file_upload?.image.enabled && files?.length)
+    // if (appConfig?.file_upload?.image.enabled && files?.length)
+    if (files?.length)
       data.files = files
 
     handleSend(

@@ -62,36 +62,47 @@
 }
 .pdfIcon {
   background-image: url(~@/assets/pdf.svg);
+  background-size: 100% 100%;
 }
 .jsonIcon {
   background-image: url(~@/assets/json.svg);
+  background-size: 100% 100%;
 }
 .htmlIcon {
   background-image: url(~@/assets/html.svg);
+  background-size: 100% 100%;
 }
 .txtIcon {
   background-image: url(~@/assets/txt.svg);
+  background-size: 100% 100%;
 }
 .markdownIcon {
   background-image: url(~@/assets/md.svg);
+  background-size: 100% 100%;
 }
 .mdIcon {
   background-image: url(~@/assets/md.svg);
+  background-size: 100% 100%;
 }
 .xlsIcon {
   background-image: url(~@/assets/xlsx.svg);
+  background-size: 100% 100%;
 }
 .xlsxIcon {
   background-image: url(~@/assets/xlsx.svg);
+  background-size: 100% 100%;
 }
 .csvIcon {
   background-image: url(~@/assets/csv.svg);
+  background-size: 100% 100%;
 }
 .docIcon {
   background-image: url(~@/assets/doc.svg);
+  background-size: 100% 100%;
 }
 .docxIcon {
   background-image: url(~@/assets/docx.svg);
+  background-size: 100% 100%;
 }
 .statusItemDetail {
   @apply h-8 font-medium border border-gray-200 inline-flex items-center rounded-lg pl-3 pr-4 mr-2;

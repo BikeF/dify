@@ -13,7 +13,8 @@ import { User } from '@/app/components/base/icons/src/public/avatar'
 import { Markdown } from '@/app/components/base/markdown'
 import ImageGallery from '@/app/components/base/image-gallery'
 import { FileType } from '@/types/app'
-import { ExcelIcon, FileIcon, PdfIcon } from '@/app/components/base/icons/svgr'
+import cn from '@/utils/classnames'
+import s from '@/app/components/datasets/documents/style.module.css'
 
 type QuestionProps = {
   item: ChatItem
@@ -30,6 +31,10 @@ const Question: FC<QuestionProps> = ({
     message_files,
   } = item
 
+  const getExtension = (url: string) => {
+    return url.split('.').pop()?.toLowerCase()
+  }
+
   // const imgSrcs = message_files?.length ? message_files.map(item => item.url) : []
   return (
     <div className='flex justify-end mb-2 last:mb-0 pl-10'>
@@ -43,17 +48,16 @@ const Question: FC<QuestionProps> = ({
           style={theme?.chatBubbleColorStyle ? CssTransform(theme.chatBubbleColorStyle) : {}}
         >
           {
-            (message_files || []).map((item) => {
-              if (item.type === FileType.image)
-                return <ImageGallery srcs={[item.url]} />
-              else if (item.type === FileType.excel)
-                return <div className='w-8 h-8 text-[#800080]'><ExcelIcon className="w-full h-full"></ExcelIcon></div>
-              else if (item.type === FileType.pdf)
-                return <div className='w-8 h-8 text-[#FFA500]'><PdfIcon className="w-full h-full"></PdfIcon></div>
-              else if (item.type === FileType.unknown)
-                return <div className='w-8 h-8 text-[#32CD32]'><FileIcon className="w-full h-full"></FileIcon></div>
-
-              return <></>
+            (message_files || []).map((item, index) => {
+              if (item.type === FileType.image) {
+                return <ImageGallery key={index} srcs={[item.url]} />
+              }
+              else {
+                return <div key={index} className={cn('bg-gray-500 border-y-zinc-300 text-white py-1 px-2 mb-1 flex items-center rounded')}>
+                  <div className={cn(s[`${getExtension(item.url)}Icon`], 'w-4 h-4')}></div>
+                  <span className='ml-1 text-xs'>{item.url}</span>
+                </div>
+              }
             })
           }
           <Markdown content={content} />

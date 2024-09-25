@@ -82,7 +82,7 @@ const ChatItem: FC<ChatItemProps> = ({
       model_config: configData,
     }
 
-    if (visionConfig.enabled && files?.length && supportVision)
+    if (files?.length)
       data.files = files
 
     handleSend(

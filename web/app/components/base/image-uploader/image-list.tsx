@@ -12,7 +12,7 @@ import Tooltip from '@/app/components/base/tooltip'
 import type { ImageFile } from '@/types/app'
 import { FileType, TransferMethod } from '@/types/app'
 import ImagePreview from '@/app/components/base/image-uploader/image-preview'
-import { ExcelIcon, FileIcon, PdfIcon } from '@/app/components/base/icons/svgr'
+import s from '@/app/components/datasets/documents/style.module.css'
 
 type ImageListProps = {
   list: ImageFile[]
@@ -46,9 +46,16 @@ const ImageList: FC<ImageListProps> = ({
     if (item.type === TransferMethod.remote_url && onImageLinkLoadError)
       onImageLinkLoadError(item._id)
   }
-
+  const getExtension = (item: ImageFile) => {
+    if (item.file)
+      return item.file.name.split('.').pop()?.toLowerCase()
+    else if (item.url)
+      return item.url.split('.').pop()?.toLowerCase()
+    else
+      return ''
+  }
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap items-center">
       {list.map(item => (
         <div
           key={item._id}
@@ -96,9 +103,9 @@ const ImageList: FC<ImageListProps> = ({
               )}
             </div>
           )}
-          <div className='relative w-16 h-16 rounded-lg border-[0.5px] border-black/5 overflow-hidden'>
+          {item.fileType === FileType.image && <div className='relative w-16 h-16 rounded-lg border-[0.5px] border-black/5 overflow-hidden'>
             {/* 上传图片 */}
-            {item.fileType === FileType.image && <img
+            <img
               className="w-full h-full object-cover cursor-pointer "
               alt={item.file?.name}
               onLoad={() => handleImageLinkLoadSuccess(item)}
@@ -116,14 +123,14 @@ const ImageList: FC<ImageListProps> = ({
                     : item.base64Url) as string,
                 )
               }
-            />}
+            />
+          </div>}
+          {/* 上传文件 */}
+          {item.fileType !== FileType.image && <div className={cn('absoluteleft-4 top-4 bg-gray-500 border-y-zinc-300 text-white py-1 px-2 flex items-center rounded')}>
+            <div className={cn(s[`${getExtension(item)}Icon`], 'w-4 h-4')}></div>
+            <span className='ml-1 text-xs'>{item.file?.name}</span>
+          </div>}
 
-            {/* 上传文件 */}
-            {item.fileType === FileType.excel && <div className='absolute w-8 h-8 left-4 top-4'><ExcelIcon className="w-full h-full text-red"></ExcelIcon></div>}
-            {item.fileType === FileType.pdf && <div className='absolute w-8 h-8 left-4 top-4'><PdfIcon className="w-full h-full text-red"></PdfIcon></div>}
-            {item.fileType === FileType.unknown && <div className='absolute w-8 h-8 left-4 top-4'><FileIcon className="w-full h-full text-red"></FileIcon></div>}
-
-          </div>
           {!readonly && (
             <button
               type="button"
