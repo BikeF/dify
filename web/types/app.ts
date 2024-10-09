@@ -387,7 +387,7 @@ export enum TtsAutoPlay {
 
 // 可以把ALLOW_FILE_EXTENSIONS改名为IMAGE_FILE_EXTENSIONS,把ALLOW_FILE_EXTENSIONS2改为ALLOW_FILE_EXTENSIONS，包括所有格式，然后更改对应逻辑
 export const ALLOW_FILE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp', 'gif']
-export const ALLOW_FILE_EXTENSIONS2 = ['pdf', 'xlsx', 'xls']
+export const ALLOW_FILE_EXTENSIONS2 = ['pdf', 'xlsx', 'xls', 'doc', 'docx', 'htm', 'html']
 export const PDF_FILE_EXTENSIONS = ['pdf']
 export const EXCEL_FILE_EXTENSIONS = ['xlsx', 'xls']
 export const WORD_FILE_EXTENSIONS = ['doc', 'docx']
