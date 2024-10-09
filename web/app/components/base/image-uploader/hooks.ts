@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 import { imageUpload } from './utils'
 import { useToastContext } from '@/app/components/base/toast'
-import { ALLOW_FILE_EXTENSIONS, ALLOW_FILE_EXTENSIONS2, EXCEL_FILE_EXTENSIONS, FileType, PDF_FILE_EXTENSIONS, TransferMethod } from '@/types/app'
+import { ALLOW_FILE_EXTENSIONS, ALLOW_FILE_EXTENSIONS2, EXCEL_FILE_EXTENSIONS, FileType, HTML_FILE_EXTENSIONS, PDF_FILE_EXTENSIONS, TransferMethod, WORD_FILE_EXTENSIONS } from '@/types/app'
 import type { ImageFile, VisionSettings } from '@/types/app'
 
 export const useImageFiles = () => {
@@ -143,6 +143,10 @@ export const useLocalFileUploader = ({ limit, disabled = false, onUpload, enable
       fileType = FileType.pdf
     else if (EXCEL_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
       fileType = FileType.excel
+    else if (WORD_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
+      fileType = FileType.word
+    else if (HTML_FILE_EXTENSIONS.includes((file.name.split('.').pop() as string).toLowerCase()))
+      fileType = FileType.html
 
     const reader = new FileReader()
     reader.addEventListener(

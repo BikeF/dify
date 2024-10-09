@@ -47,12 +47,14 @@ const ImageList: FC<ImageListProps> = ({
       onImageLinkLoadError(item._id)
   }
   const getExtension = (item: ImageFile) => {
+    let result: string | undefined
+
     if (item.file)
-      return item.file.name.split('.').pop()?.toLowerCase()
-    else if (item.url)
-      return item.url.split('.').pop()?.toLowerCase()
-    else
-      return ''
+      result = item.file.name.split('.').pop()?.toLowerCase()
+    else if (item.url && item.url.split('/').pop()?.indexOf('.') !== -1)
+      result = item.url.split('.').pop()?.toLowerCase()
+
+    return result || 'unknown'
   }
   return (
     <div className="flex flex-wrap items-center">

@@ -390,11 +390,15 @@ export const ALLOW_FILE_EXTENSIONS = ['png', 'jpg', 'jpeg', 'webp', 'gif']
 export const ALLOW_FILE_EXTENSIONS2 = ['pdf', 'xlsx', 'xls']
 export const PDF_FILE_EXTENSIONS = ['pdf']
 export const EXCEL_FILE_EXTENSIONS = ['xlsx', 'xls']
+export const WORD_FILE_EXTENSIONS = ['doc', 'docx']
+export const HTML_FILE_EXTENSIONS = ['htm', 'html']
 export enum FileType {
   excel = 'excel',
   image = 'image',
   pdf = 'pdf',
-  unknown = 'unknown',
+  word = 'word',
+  html = 'html',
+  unknown = 'url',
 }
 
 export type VisionSettings = {

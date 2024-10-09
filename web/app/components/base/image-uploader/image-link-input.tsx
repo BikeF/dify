@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Button from '@/app/components/base/button'
 import type { ImageFile } from '@/types/app'
-import { ALLOW_FILE_EXTENSIONS, EXCEL_FILE_EXTENSIONS, FileType, PDF_FILE_EXTENSIONS, TransferMethod } from '@/types/app'
+import { ALLOW_FILE_EXTENSIONS, EXCEL_FILE_EXTENSIONS, FileType, HTML_FILE_EXTENSIONS, PDF_FILE_EXTENSIONS, TransferMethod, WORD_FILE_EXTENSIONS } from '@/types/app'
 
 type ImageLinkInputProps = {
   onUpload: (imageFile: ImageFile) => void
@@ -22,7 +22,7 @@ const ImageLinkInput: FC<ImageLinkInputProps> = ({
       return
 
     function getFileType(url: string) {
-      const extension = url.split('.').pop()?.toLowerCase()
+      const extension = url && url.split('.').pop()?.toLowerCase()
       if (extension) {
         if (PDF_FILE_EXTENSIONS.includes(extension))
           return FileType.pdf
@@ -30,6 +30,10 @@ const ImageLinkInput: FC<ImageLinkInputProps> = ({
           return FileType.excel
         else if (ALLOW_FILE_EXTENSIONS.includes(extension))
           return FileType.image
+        else if (WORD_FILE_EXTENSIONS.includes(extension))
+          return FileType.word
+        else if (HTML_FILE_EXTENSIONS.includes(extension))
+          return FileType.html
       }
 
       return FileType.unknown
@@ -40,7 +44,10 @@ const ImageLinkInput: FC<ImageLinkInputProps> = ({
       _id: `${Date.now()}`,
       fileId: '',
       fileType: getFileType(imageLink),
-      progress: regex.test(imageLink) ? 0 : -1,
+      // file: {
+      //   name: imageLink
+      // },
+      progress: getFileType(imageLink) === 'image' ? (regex.test(imageLink) ? 0 : -1) : 100, // 图片因为预览，所以进度默认0，别的类型问题进度直接默认100
       url: imageLink,
     }
 

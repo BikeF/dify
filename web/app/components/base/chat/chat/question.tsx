@@ -31,8 +31,8 @@ const Question: FC<QuestionProps> = ({
     message_files,
   } = item
 
-  const getExtension = (url: string) => {
-    return url.split('.').pop()?.toLowerCase()
+  const getExtension = (url: string, type: string) => {
+    return type || url.split('.').pop()?.toLowerCase()
   }
 
   // const imgSrcs = message_files?.length ? message_files.map(item => item.url) : []
@@ -54,7 +54,7 @@ const Question: FC<QuestionProps> = ({
               }
               else {
                 return <div key={index} className={cn('bg-gray-500 border-y-zinc-300 text-white py-1 px-2 mb-1 flex items-center rounded')}>
-                  <div className={cn(s[`${getExtension(item.url)}Icon`], 'w-4 h-4')}></div>
+                  <div className={cn(s[`${getExtension(item.url, item.type)}Icon`], 'w-4 h-4')}></div>
                   <span className='ml-1 text-xs'>{item.url}</span>
                 </div>
               }

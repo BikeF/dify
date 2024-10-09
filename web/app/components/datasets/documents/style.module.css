@@ -72,6 +72,10 @@
   background-image: url(~@/assets/html.svg);
   background-size: 100% 100%;
 }
+.htmIcon {
+  background-image: url(~@/assets/html.svg);
+  background-size: 100% 100%;
+}
 .txtIcon {
   background-image: url(~@/assets/txt.svg);
   background-size: 100% 100%;
@@ -82,6 +86,10 @@
 }
 .mdIcon {
   background-image: url(~@/assets/md.svg);
+  background-size: 100% 100%;
+}
+.excelIcon {
+  background-image: url(~@/assets/xlsx.svg);
   background-size: 100% 100%;
 }
 .xlsIcon {
@@ -96,12 +104,20 @@
   background-image: url(~@/assets/csv.svg);
   background-size: 100% 100%;
 }
+.wordIcon {
+  background-image: url(~@/assets/doc.svg);
+  background-size: 100% 100%;
+}
 .docIcon {
   background-image: url(~@/assets/doc.svg);
   background-size: 100% 100%;
 }
 .docxIcon {
   background-image: url(~@/assets/docx.svg);
+  background-size: 100% 100%;
+}
+.unknownIcon {
+  background-image: url(~@/assets/unknown.svg);
   background-size: 100% 100%;
 }
 .statusItemDetail {
