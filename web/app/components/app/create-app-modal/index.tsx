@@ -47,7 +47,7 @@ const CreateAppModal = ({ show, onSuccess, onClose }: CreateAppDialogProps) => {
   // 这个默认图片是手动去上传 / images / bot - avatar.jpg之后拿到fileId放到这里的，然后url先显示 / images / bot - avatar.jpg。机器人创建成功后他会根据fileId去拿真实的图片路径的
   // 所以如果迁移系统什么的，新系统其实不存在这个fileId的，应该再手动上传下图片，用新的fileId
   // 这样改动最小，但是确实不太好
-  const [appIcon, setAppIcon] = useState<AppIconSelection>({ type: 'image', fileId: '3f0da315-0605-4220-8966-397096516308', url: '/images/bot-avatar.webp' })
+  const [appIcon, setAppIcon] = useState<AppIconSelection>({ type: 'image', fileId: '75629161-4785-4727-956f-93347ca786fc', url: '/images/bot-avatar.webp' })
   const [showAppIconPicker, setShowAppIconPicker] = useState(false)
   const [name, setName] = useState('')
   const [description, setDescription] = useState('')
