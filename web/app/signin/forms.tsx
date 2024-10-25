@@ -38,10 +38,10 @@ const Forms = () => {
       </div>
       <div
         className={cn(
-          'mx-auto flex flex-col items-center justify-center w-[500px]',
+          'mx-auto flex flex-col items-center justify-center w-[500px] max-w-[90vw]',
         )}
       >
-        <div className="flex flex-col h-full w-full">{getForm()}</div>
+        <div className="flex flex-col h-full w-full bg-white shadow-box rounded-[30px] px-6 md:px-[50px] pt-[60px]">{getForm()}</div>
       </div>
     </div>
   )

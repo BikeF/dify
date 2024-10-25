@@ -11,7 +11,7 @@ const HeaderWrapper = ({
   children,
 }: HeaderWrapperProps) => {
   const pathname = usePathname()
-  const isBordered = ['/apps', '/datasets', '/datasets/create', '/tools'].includes(pathname)
+  const isBordered = ['/apps', '/datasets', '/datasets/create', '/tools', '/account'].includes(pathname)
 
   const isAppEdit = /\/app\/[a-z|0-9|\-]+\/[configuration|workflow|develop|logs|overview]/.test(pathname)
   return (

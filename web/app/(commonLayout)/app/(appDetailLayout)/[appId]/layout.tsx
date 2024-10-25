@@ -111,6 +111,11 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
     setAppDetail()
     fetchAppDetail({ url: '/apps', id: appId }).then((res) => {
       // redirection
+      const canIEditApp = isCurrentWorkspaceEditor
+      if (!canIEditApp && (pathname.endsWith('configuration') || pathname.endsWith('workflow') || pathname.endsWith('logs'))) {
+        router.replace(`/app/${appId}/overview`)
+        return
+      }
       if ((res.mode === 'workflow' || res.mode === 'advanced-chat') && (pathname).endsWith('configuration')) {
         router.replace(`/app/${appId}/workflow`)
       }
@@ -120,7 +125,7 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
       else {
         setAppDetail({ ...res, enable_sso: false })
         setNavigation(getNavigations(appId, isCurrentWorkspaceEditor, res.mode))
-        if (systemFeatures.enable_web_sso_switch_component) {
+        if (systemFeatures.enable_web_sso_switch_component && canIEditApp) {
           fetchAppSSO({ appId }).then((ssoRes) => {
             setAppDetail({ ...res, enable_sso: ssoRes.enabled })
           })
@@ -130,7 +135,7 @@ const AppDetailLayout: FC<IAppDetailLayoutProps> = (props) => {
       if (e.status === 404)
         router.replace('/apps')
     })
-  }, [appId, isCurrentWorkspaceEditor, systemFeatures])
+  }, [appId, isCurrentWorkspaceEditor, systemFeatures, getNavigations, pathname, router, setAppDetail])
 
   useUnmount(() => {
     setAppDetail()

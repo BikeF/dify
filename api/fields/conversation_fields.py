@@ -3,6 +3,8 @@ from flask_restful import fields
 from fields.member_fields import simple_account_fields
 from libs.helper import TimestampField
 
+from .raws import FilesContainedField
+
 
 class MessageTextField(fields.Raw):
     def format(self, value):
@@ -33,8 +35,12 @@ annotation_hit_history_fields = {
 
 message_file_fields = {
     "id": fields.String,
+    "filename": fields.String,
     "type": fields.String,
     "url": fields.String,
+    "mime_type": fields.String,
+    "size": fields.Integer,
+    "transfer_method": fields.String,
     "belongs_to": fields.String(default="user"),
 }
 
@@ -55,7 +61,7 @@ agent_thought_fields = {
 message_detail_fields = {
     "id": fields.String,
     "conversation_id": fields.String,
-    "inputs": fields.Raw,
+    "inputs": FilesContainedField,
     "query": fields.String,
     "message": fields.Raw,
     "message_tokens": fields.Integer,
@@ -71,10 +77,11 @@ message_detail_fields = {
     "annotation_hit_history": fields.Nested(annotation_hit_history_fields, allow_null=True),
     "created_at": TimestampField,
     "agent_thoughts": fields.List(fields.Nested(agent_thought_fields)),
-    "message_files": fields.List(fields.Nested(message_file_fields), attribute="files"),
+    "message_files": fields.List(fields.Nested(message_file_fields)),
     "metadata": fields.Raw(attribute="message_metadata_dict"),
     "status": fields.String,
     "error": fields.String,
+    "parent_message_id": fields.String,
 }
 
 feedback_stat_fields = {"like": fields.Integer, "dislike": fields.Integer}
@@ -98,7 +105,7 @@ simple_model_config_fields = {
 }
 
 simple_message_detail_fields = {
-    "inputs": fields.Raw,
+    "inputs": FilesContainedField,
     "query": fields.String,
     "message": MessageTextField,
     "answer": fields.String,
@@ -186,7 +193,7 @@ conversation_detail_fields = {
 simple_conversation_fields = {
     "id": fields.String,
     "name": fields.String,
-    "inputs": fields.Raw,
+    "inputs": FilesContainedField,
     "status": fields.String,
     "introduction": fields.String,
     "created_at": TimestampField,

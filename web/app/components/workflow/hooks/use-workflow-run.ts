@@ -24,6 +24,9 @@ import {
 } from '@/service/workflow'
 import { useFeaturesStore } from '@/app/components/base/features/hooks'
 import { AudioPlayerManager } from '@/app/components/base/audio-btn/audio.player.manager'
+import {
+  getProcessedFilesFromResponse,
+} from '@/app/components/base/file-uploader/utils'
 
 export const useWorkflowRun = () => {
   const store = useStoreApi()
@@ -185,7 +188,7 @@ export const useWorkflowRun = () => {
             draft.forEach((edge) => {
               edge.data = {
                 ...edge.data,
-                _runned: false,
+                _run: false,
               }
             })
           })
@@ -207,6 +210,7 @@ export const useWorkflowRun = () => {
             draft.result = {
               ...draft.result,
               ...data,
+              files: getProcessedFilesFromResponse(data.files || []),
             } as any
             if (isStringOutput) {
               draft.resultTabActive = true
@@ -292,7 +296,7 @@ export const useWorkflowRun = () => {
             const newEdges = produce(edges, (draft) => {
               draft.forEach((edge) => {
                 if (edge.target === data.node_id && incomeNodesId.includes(edge.source))
-                  edge.data = { ...edge.data, _runned: true } as any
+                  edge.data = { ...edge.data, _run: true } as any
               })
             })
             setEdges(newEdges)
@@ -416,7 +420,7 @@ export const useWorkflowRun = () => {
             const edge = draft.find(edge => edge.target === data.node_id && edge.source === prevNodeId)
 
             if (edge)
-              edge.data = { ...edge.data, _runned: true } as any
+              edge.data = { ...edge.data, _run: true } as any
           })
           setEdges(newEdges)
 

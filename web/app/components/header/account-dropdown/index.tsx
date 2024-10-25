@@ -4,7 +4,9 @@ import { Fragment, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useContext } from 'use-context-selector'
 import { RiArrowDownSLine } from '@remixicon/react'
+import Link from 'next/link'
 import { Menu, Transition } from '@headlessui/react'
+import Indicator from '../indicator'
 import AccountAbout from '../account-about'
 import { mailToSupport } from '../utils/util'
 import WorkplaceSelector from './workplace-selector'
@@ -16,6 +18,7 @@ import { useAppContext } from '@/context/app-context'
 import { ArrowUpRight } from '@/app/components/base/icons/src/vender/line/arrows'
 import { LogOut01 } from '@/app/components/base/icons/src/vender/line/general'
 import { useModalContext } from '@/context/modal-context'
+import { LanguagesSupported } from '@/i18n/language'
 import { useProviderContext } from '@/context/provider-context'
 import { Plan } from '@/app/components/billing/type'
 
@@ -104,7 +107,16 @@ export default function AppSelector({ isMobile }: IAppSelector) {
                   </div>
                   <div className="px-1 py-1">
                     <Menu.Item>
-                      <div className={itemClassName} onClick={() => setShowAccountSettingModal({ payload: 'account' })}>
+                      <Link
+                        className={classNames(itemClassName, 'group justify-between')}
+                        href='/account'
+                        target='_self' rel='noopener noreferrer'>
+                        <div>{t('common.account.account')}</div>
+                        <ArrowUpRight className='hidden w-[14px] h-[14px] text-gray-500 group-hover:flex' />
+                      </Link>
+                    </Menu.Item>
+                    <Menu.Item>
+                      <div className={itemClassName} onClick={() => setShowAccountSettingModal({ payload: 'members' })}>
                         <div>{t('common.userProfile.settings')}</div>
                       </div>
                     </Menu.Item>

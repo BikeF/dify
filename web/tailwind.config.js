@@ -64,13 +64,6 @@ module.exports = {
         },
         ...tailwindThemeVarDefine,
       },
-      backgroundImage: {
-        primarylinear: 'linear-gradient( 145deg, #02A762 0%, #029156 100%)',
-        primarylinearhover: 'linear-gradient( 145deg, #4fca8c 0%, #029156 100%)',
-        primaryLinearText: 'linear-gradient(91.58deg, #029156 -29.55%, #FFF4E1 75.22%)',
-        primaryLinearText2: 'linear-gradient(to right, #029156 0, #FFE3B6 100%)',
-        primaryLinearText3: 'linear-gradient(90deg, #4fca8c 0%, #029156 100%);',
-      },
       screens: {
         mobile: '100px',
         // => @media (min-width: 100px) { ... }
@@ -96,6 +89,16 @@ module.exports = {
       },
       fontSize: {
         '2xs': '0.625rem',
+      },
+      backgroundImage: {
+        primarylinear: 'linear-gradient( 145deg, #02A762 0%, #029156 100%)',
+        primarylinearhover: 'linear-gradient( 145deg, #4fca8c 0%, #029156 100%)',
+        primaryLinearText: 'linear-gradient(91.58deg, #029156 -29.55%, #FFF4E1 75.22%)',
+        primaryLinearText2: 'linear-gradient(to right, #029156 0, #FFE3B6 100%)',
+        primaryLinearText3: 'linear-gradient(90deg, #4fca8c 0%, #029156 100%);',
+        'chatbot-bg': 'var(--color-chatbot-bg)',
+        'chat-bubble-bg': 'var(--color-chat-bubble-bg)',
+        'workflow-process-bg': 'var(--color-workflow-process-bg)',
       },
     },
   },

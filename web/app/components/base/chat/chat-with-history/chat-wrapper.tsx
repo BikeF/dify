@@ -2,9 +2,11 @@ import { useCallback, useEffect, useMemo } from 'react'
 import Chat from '../chat'
 import type {
   ChatConfig,
+  ChatItem,
   OnSend,
 } from '../types'
 import { useChat } from '../chat/hooks'
+import { getLastAnswer } from '../utils'
 import { useChatWithHistoryContext } from './context'
 import Header from './header'
 import ConfigPanel from './config-panel'
@@ -44,6 +46,8 @@ const ChatWrapper = () => {
   }, [appParams, currentConversationItem?.introduction, currentConversationId])
   const {
     chatList,
+    chatListRef,
+    handleUpdateChatList,
     handleSend,
     handleStop,
     isResponding,
@@ -52,7 +56,7 @@ const ChatWrapper = () => {
     appConfig,
     {
       inputs: (currentConversationId ? currentConversationItem?.inputs : newConversationInputs) as any,
-      promptVariables: inputsForms,
+      inputsForm: inputsForms,
     },
     appPrevChatList,
     taskId => stopChatMessageResponding('', taskId, isInstalledApp, appId),
@@ -61,18 +65,17 @@ const ChatWrapper = () => {
   useEffect(() => {
     if (currentChatInstanceRef.current)
       currentChatInstanceRef.current.handleStop = handleStop
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const doSend: OnSend = useCallback((message, files) => {
+  const doSend: OnSend = useCallback((message, files, last_answer) => {
     const data: any = {
       query: message,
+      files,
       inputs: currentConversationId ? currentConversationItem?.inputs : newConversationInputs,
       conversation_id: currentConversationId,
+      parent_message_id: last_answer?.id || getLastAnswer(chatListRef.current)?.id || null,
     }
-
-    // if (appConfig?.file_upload?.image.enabled && files?.length)
-    if (files?.length)
-      data.files = files
 
     handleSend(
       getUrl('chat-messages', isInstalledApp, appId || ''),
@@ -84,7 +87,7 @@ const ChatWrapper = () => {
       },
     )
   }, [
-    appConfig,
+    chatListRef,
     currentConversationId,
     currentConversationItem,
     handleSend,
@@ -93,6 +96,23 @@ const ChatWrapper = () => {
     isInstalledApp,
     appId,
   ])
+
+  const doRegenerate = useCallback((chatItem: ChatItem) => {
+    const index = chatList.findIndex(item => item.id === chatItem.id)
+    if (index === -1)
+      return
+
+    const prevMessages = chatList.slice(0, index)
+    const question = prevMessages.pop()
+    const lastAnswer = getLastAnswer(prevMessages)
+
+    if (!question)
+      return
+
+    handleUpdateChatList(prevMessages)
+    doSend(question.content, question.message_files, lastAnswer)
+  }, [chatList, handleUpdateChatList, doSend])
+
   const chatNode = useMemo(() => {
     if (inputsForms.length) {
       return (
@@ -140,24 +160,31 @@ const ChatWrapper = () => {
     : null
 
   return (
-    <Chat
-      appData={appData}
-      config={appConfig}
-      chatList={chatList}
-      isResponding={isResponding}
-      chatContainerInnerClassName={`mx-auto pt-6 w-full max-w-full ${isMobile && 'px-4'}`}
-      chatFooterClassName='pb-4'
-      chatFooterInnerClassName={`mx-auto w-full max-w-full ${isMobile && 'px-4'}`}
-      onSend={doSend}
-      onStopResponding={handleStop}
-      chatNode={chatNode}
-      allToolIcons={appMeta?.tool_icons || {}}
-      onFeedback={handleFeedback}
-      suggestedQuestions={suggestedQuestions}
-      answerIcon={answerIcon}
-      hideProcessDetail
-      themeBuilder={themeBuilder}
-    />
+    <div
+      className='h-full bg-chatbot-bg overflow-hidden'
+    >
+      <Chat
+        appData={appData}
+        config={appConfig}
+        chatList={chatList}
+        isResponding={isResponding}
+        chatContainerInnerClassName={`mx-auto pt-6 w-full max-w-[720px] ${isMobile && 'px-4'}`}
+        chatFooterClassName='pb-4'
+        chatFooterInnerClassName={`mx-auto w-full max-w-[720px] ${isMobile && 'px-4'}`}
+        onSend={doSend}
+        inputs={currentConversationId ? currentConversationItem?.inputs as any : newConversationInputs}
+        inputsForm={inputsForms}
+        onRegenerate={doRegenerate}
+        onStopResponding={handleStop}
+        chatNode={chatNode}
+        allToolIcons={appMeta?.tool_icons || {}}
+        onFeedback={handleFeedback}
+        suggestedQuestions={suggestedQuestions}
+        answerIcon={answerIcon}
+        hideProcessDetail
+        themeBuilder={themeBuilder}
+      />
+    </div>
   )
 }
 

@@ -1,8 +1,10 @@
+import logging
 from threading import Thread
 from typing import Optional, Union
 
 from flask import Flask, current_app
 
+from configs import dify_config
 from core.app.entities.app_invoke_entities import (
     AdvancedChatAppGenerateEntity,
     AgentChatAppGenerateEntity,
@@ -82,7 +84,9 @@ class MessageCycleManage:
                 try:
                     name = LLMGenerator.generate_conversation_name(app_model.tenant_id, query)
                     conversation.name = name
-                except:
+                except Exception as e:
+                    if dify_config.DEBUG:
+                        logging.exception(f"generate conversation name failed: {e}")
                     pass
 
                 db.session.merge(conversation)
@@ -153,14 +157,21 @@ class MessageCycleManage:
 
         return None
 
-    def _message_to_stream_response(self, answer: str, message_id: str) -> MessageStreamResponse:
+    def _message_to_stream_response(
+        self, answer: str, message_id: str, from_variable_selector: Optional[list[str]] = None
+    ) -> MessageStreamResponse:
         """
         Message to stream response.
         :param answer: answer
         :param message_id: message id
         :return:
         """
-        return MessageStreamResponse(task_id=self._application_generate_entity.task_id, id=message_id, answer=answer)
+        return MessageStreamResponse(
+            task_id=self._application_generate_entity.task_id,
+            id=message_id,
+            answer=answer,
+            from_variable_selector=from_variable_selector,
+        )
 
     def _message_replace_to_stream_response(self, answer: str) -> MessageReplaceStreamResponse:
         """

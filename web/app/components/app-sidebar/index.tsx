@@ -17,6 +17,7 @@ export type IAppDetailNavProps = {
   iconType?: 'app' | 'dataset' | 'notion'
   title: string
   desc: string
+  isExternal?: boolean
   icon: string
   icon_background: string
   isVertical?: boolean
@@ -29,7 +30,7 @@ export type IAppDetailNavProps = {
   extraInfo?: (modeState: string) => React.ReactNode
 }
 
-const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInfo, iconType = 'app', isVertical = true }: IAppDetailNavProps) => {
+const AppDetailNav = ({ title, desc, isExternal, icon, icon_background, navigation, extraInfo, iconType = 'app', isVertical = true }: IAppDetailNavProps) => {
   const { appSidebarExpand, setAppSiderbarExpand } = useAppStore(useShallow(state => ({
     appSidebarExpand: state.appSidebarExpand,
     setAppSiderbarExpand: state.setAppSiderbarExpand,
@@ -82,6 +83,7 @@ const AppDetailNav = ({ title, desc, icon, icon_background, navigation, extraInf
             icon_background={icon_background}
             name={title}
             type={desc}
+            isExternal={isExternal}
           />
         )}
       </div>
