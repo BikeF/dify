@@ -42,9 +42,9 @@ ENV PORT=3000
 ENV TZ=UTC
 RUN ln -s /usr/share/zoneinfo/${TZ} /etc/localtime \
     && echo ${TZ} > /etc/timezone
-
+RUN yarn config set registry https://registry.npmmirror.com
 # global runtime packages
-RUN yarn global add pm2 \
+RUN yarn global add pm2 --registry https://registry.npmmirror.com \
     && yarn cache clean
 
 WORKDIR /app/web
