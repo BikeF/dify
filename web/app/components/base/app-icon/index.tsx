@@ -40,16 +40,21 @@ const AppIcon: FC<AppIconProps> = ({
     'overflow-hidden',
   )
 
-  imageUrl = imageUrl || '/images/bot-avatar.jpg'
   const isValidImageIcon = iconType === 'image' && imageUrl
 
+  // 当imageUrl加载失败，且imageUrl是以“/files”开头时，要让他显示成图片/images/bot-avatar.jpg
+  const defaultImageUrl = '/images/bot-avatar.jpg'
+  const handleError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    if (imageUrl && imageUrl.startsWith('/files'))
+      e.currentTarget.src = defaultImageUrl // 修改为默认头像
+  }
   return <span
     className={wrapperClassName}
     style={{ background: isValidImageIcon ? undefined : (background || '#FFEAD5') }}
     onClick={onClick}
   >
     {isValidImageIcon
-      ? <img src={imageUrl} className="w-full h-full" alt="app icon" />
+      ? <img src={imageUrl} className="w-full h-full" alt="app icon" onError={handleError} />
       : (innerIcon || ((icon && icon !== '') ? <em-emoji id={icon} /> : <em-emoji id='🤖' />))
     }
   </span>
